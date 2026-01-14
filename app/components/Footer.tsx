@@ -87,14 +87,20 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-3 sm:mb-4 text-base sm:text-lg">Legal</h4>
             <ul className="space-y-2 sm:space-y-3">
               <li>
-                <a href="#terminos" className="min-h-[44px] block text-sm sm:text-base hover:text-white transition-colors duration-200 py-2">
-                  Términos y condiciones
-                </a>
+                <button
+                  onClick={() => scrollToSection('terminos')}
+                  className="min-h-[44px] text-sm sm:text-base hover:text-white transition-colors duration-200 text-left py-2"
+                >
+                  Términos de Servicio
+                </button>
               </li>
               <li>
-                <a href="#privacidad" className="min-h-[44px] block text-sm sm:text-base hover:text-white transition-colors duration-200 py-2">
+                <button
+                  onClick={() => scrollToSection('privacidad')}
+                  className="min-h-[44px] text-sm sm:text-base hover:text-white transition-colors duration-200 text-left py-2"
+                >
                   Política de privacidad
-                </a>
+                </button>
               </li>
               <li>
                 <a href="#contacto" className="min-h-[44px] block text-sm sm:text-base hover:text-white transition-colors duration-200 py-2">

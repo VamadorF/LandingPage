@@ -50,7 +50,7 @@ export default function PreregisterForm() {
     }
 
     if (!formData.aceptaTerminos) {
-      newErrors.aceptaTerminos = 'Debes aceptar los términos y condiciones'
+      newErrors.aceptaTerminos = 'Debes aceptar los Términos de Servicio'
     }
 
     setErrors(newErrors)
@@ -261,7 +261,7 @@ export default function PreregisterForm() {
                   <span className="text-sm sm:text-base text-gray-700 leading-relaxed">
                     Acepto los{' '}
                     <a href="#terminos" className="text-purple-600 hover:underline">
-                      términos y condiciones
+                      Términos de Servicio
                     </a>{' '}
                     y la{' '}
                     <a href="#privacidad" className="text-purple-600 hover:underline">
