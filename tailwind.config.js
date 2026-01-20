@@ -8,29 +8,59 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Colores primarios (marca / énfasis)
+        brand: {
+          DEFAULT: '#E91E63', // Fucsia-magenta principal
+          light: '#F06292',   // Rosa intenso degradado
+          lighter: '#F8BBD0',  // Rosa claro
+        },
+        // Colores secundarios (fondos y UI suave)
+        background: {
+          lavender: {
+            light: '#F3F0FA',  // Lila muy claro / lavanda
+            DEFAULT: '#EDE7F6', // Lavanda claro
+          },
+          gray: {
+            light: '#F5F5F5',  // Gris muy claro (cards / fondos)
+          },
+        },
+        // Colores neutros
+        neutral: {
+          white: '#FFFFFF',     // Blanco puro
+          gray: {
+            medium: '#9E9E9E',  // Gris medio (texto secundario)
+            dark: '#424242',     // Gris oscuro (texto principal)
+          },
+          black: {
+            soft: '#1F1F1F',     // Negro suave (mockups / marcos)
+          },
+        },
+        // Mantener compatibilidad con clases existentes
         primary: {
-          50: '#fef2f2',
-          100: '#fee2e2',
-          200: '#fecaca',
-          300: '#fca5a5',
-          400: '#f87171',
-          500: '#ef4444',
-          600: '#dc2626',
-          700: '#b91c1c',
-          800: '#991b1b',
-          900: '#7f1d1d',
+          DEFAULT: '#E91E63',
+          50: '#F3F0FA',
+          100: '#EDE7F6',
+          200: '#F8BBD0',
+          300: '#F8BBD0',
+          400: '#F06292',
+          500: '#E91E63',
+          600: '#E91E63',
+          700: '#C2185B',
+          800: '#AD1457',
+          900: '#880E4F',
         },
         secondary: {
-          50: '#fdf4ff',
-          100: '#fae8ff',
-          200: '#f5d0fe',
-          300: '#f0abfc',
-          400: '#e879f9',
-          500: '#d946ef',
-          600: '#c026d3',
-          700: '#a21caf',
-          800: '#86198f',
-          900: '#701a75',
+          DEFAULT: '#F06292',
+          50: '#F3F0FA',
+          100: '#EDE7F6',
+          200: '#F8BBD0',
+          300: '#F8BBD0',
+          400: '#F06292',
+          500: '#F06292',
+          600: '#E91E63',
+          700: '#C2185B',
+          800: '#AD1457',
+          900: '#880E4F',
         },
       },
       fontFamily: {
