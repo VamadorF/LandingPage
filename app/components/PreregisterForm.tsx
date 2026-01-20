@@ -108,6 +108,7 @@ export default function PreregisterForm() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#424242] mb-3 sm:mb-4">
             Preregístrate ahora
           </h2>
+<<<<<<< HEAD
           <p className="text-base sm:text-lg md:text-xl text-[#9E9E9E] px-2">
             Sé uno de los primeros en experimentar eJoi. Reserva tu lugar hoy.
           </p>
