@@ -5,7 +5,6 @@ import { useState, FormEvent } from 'react'
 interface FormData {
   nombre: string
   email: string
-  telefono: string
   arquetipo: string
   estilo: 'realista' | 'anime'
   aceptaTerminos: boolean
@@ -15,7 +14,6 @@ export default function PreregisterForm() {
   const [formData, setFormData] = useState<FormData>({
     nombre: '',
     email: '',
-    telefono: '',
     arquetipo: '',
     estilo: 'realista',
     aceptaTerminos: false,
@@ -30,6 +28,7 @@ export default function PreregisterForm() {
     { id: 'ejecutiva', name: 'La Ejecutiva' },
     { id: 'musa', name: 'La Musa' },
     { id: 'porrista', name: 'La Porrista' },
+    { id: 'otra', name: 'Otra' },
   ]
 
   const validateForm = (): boolean => {
@@ -82,7 +81,6 @@ export default function PreregisterForm() {
       setFormData({
         nombre: '',
         email: '',
-        telefono: '',
         arquetipo: '',
         estilo: 'realista',
         aceptaTerminos: false,
@@ -115,24 +113,71 @@ export default function PreregisterForm() {
 
         <div className="bg-gradient-to-br from-white to-[#F5F5F5] rounded-2xl shadow-xl p-5 sm:p-6 md:p-8 lg:p-12 border border-[#F3F0FA]">
           {submitStatus === 'success' ? (
-            <div className="text-center py-12">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
+            <div className="space-y-8">
+              <div className="text-center py-8">
+                <div className="w-20 h-20 bg-gradient-to-br from-green-100 to-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
+                  <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-3xl sm:text-4xl font-bold text-[#424242] mb-3">
+                  ¡Preregistro exitoso! 🎉
+                </h3>
+                <p className="text-lg text-[#9E9E9E] mb-2">
+                  ¡Gracias por unirte a esta aventura!
+                </p>
+                <p className="text-base text-[#9E9E9E] mb-8">
+                  Te contactaremos pronto con más información sobre el lanzamiento.
+                </p>
               </div>
-              <h3 className="text-2xl font-bold text-[#424242] mb-2">
-                ¡Preregistro exitoso!
-              </h3>
-              <p className="text-[#9E9E9E] mb-6">
-                Te contactaremos pronto con más información sobre el lanzamiento.
-              </p>
-              <button
-                onClick={() => setSubmitStatus('idle')}
-                className="px-6 py-2 text-[#E91E63] font-semibold hover:text-[#F06292]"
-              >
-                Enviar otro preregistro
-              </button>
+
+              {/* Sección de pago con Ko-fi - Más emotiva */}
+              <div className="bg-gradient-to-br from-[#F3F0FA] via-[#EDE7F6] to-[#F8BBD0] rounded-2xl p-8 sm:p-10 border-2 border-[#F06292] shadow-2xl transform transition-all duration-300 hover:shadow-3xl">
+                <div className="text-center mb-8">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#E91E63] via-[#F06292] to-[#F8BBD0] rounded-full mb-6 shadow-lg animate-bounce">
+                    <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-[#424242] mb-4">
+                    💝 Elige tu plan y apoya el proyecto
+                  </h3>
+                  <p className="text-base sm:text-lg text-[#424242] max-w-2xl mx-auto mb-2 font-medium">
+                    Tu apoyo significa el mundo para nosotros
+                  </p>
+                  <p className="text-sm sm:text-base text-[#757575] max-w-2xl mx-auto">
+                    Selecciona el plan de eJoi que mejor se adapte a ti y contribuye al desarrollo del proyecto. 
+                    Cada apoyo nos acerca más a hacer de eJoi una realidad. ¡Gracias por ser parte de esta historia! ✨
+                  </p>
+                </div>
+                
+                <div className="flex flex-col items-center gap-5">
+                  <a
+                    href="https://ko-fi.com/ejoi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-5 bg-gradient-to-r from-[#E91E63] via-[#F06292] to-[#F8BBD0] text-white font-bold rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-110 transition-all duration-300 text-lg sm:text-xl"
+                  >
+                    <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M23.881 8.948c-.169-4.225-3.663-7.599-7.881-7.599-4.317 0-7.713 3.521-7.881 7.599-.052.52-.052.52-.052 1.052 0 .532 0 .532.052 1.052.168 4.078 3.564 7.599 7.881 7.599 4.218 0 7.712-3.374 7.881-7.599.052-.52.052-.52.052-1.052 0-.532 0-.532-.052-1.052zm-1.904 1.104c-.052.52-.052.52-.052 1.052 0 .532 0 .532.052 1.052.126 3.126-2.438 5.699-5.526 5.699-3.087 0-5.652-2.573-5.777-5.699-.052-.52-.052-.52-.052-1.052 0-.532 0-.532.052-1.052.125-3.126 2.69-5.699 5.777-5.699 3.088 0 5.652 2.573 5.526 5.699z"/>
+                      <path d="M12.029 5.111c-1.916 0-3.47 1.554-3.47 3.47s1.554 3.47 3.47 3.47 3.47-1.554 3.47-3.47-1.554-3.47-3.47-3.47zm0 5.888c-1.333 0-2.418-1.085-2.418-2.418s1.085-2.418 2.418-2.418 2.418 1.085 2.418 2.418-1.085 2.418-2.418 2.418z"/>
+                    </svg>
+                    Ver planes en Ko-fi
+                  </a>
+                  <p className="text-xs sm:text-sm text-[#9E9E9E] text-center max-w-md">
+                    Al hacer clic, serás redirigido a Ko-fi donde podrás elegir tu plan y realizar el pago de forma segura.
+                  </p>
+                </div>
+              </div>
+
+              <div className="text-center">
+                <button
+                  onClick={() => setSubmitStatus('idle')}
+                  className="px-6 py-2 text-[#E91E63] font-semibold hover:text-[#F06292] transition-colors"
+                >
+                  Enviar otro preregistro
+                </button>
+              </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
@@ -174,21 +219,6 @@ export default function PreregisterForm() {
                 {errors.email && (
                   <p className="mt-1 text-sm text-red-500">{errors.email}</p>
                 )}
-              </div>
-
-              {/* Teléfono */}
-              <div>
-                <label htmlFor="telefono" className="block text-sm font-medium text-[#424242] mb-2">
-                  Teléfono <span className="text-[#9E9E9E]">(opcional)</span>
-                </label>
-                <input
-                  type="tel"
-                  id="telefono"
-                  value={formData.telefono}
-                  onChange={(e) => handleChange('telefono', e.target.value)}
-                  className="w-full text-base px-4 py-3.5 sm:py-3 rounded-lg border border-[#F5F5F5] min-h-[48px] focus:ring-2 focus:ring-[#E91E63] focus:border-transparent transition-all"
-                  placeholder="+56 9 1234 5678"
-                />
               </div>
 
               {/* Arquetipo */}
@@ -273,42 +303,6 @@ export default function PreregisterForm() {
                 {errors.aceptaTerminos && (
                   <p className="mt-1 text-sm text-red-500">{errors.aceptaTerminos}</p>
                 )}
-              </div>
-
-              {/* Sección de pago con Ko-fi */}
-              <div className="bg-gradient-to-br from-[#F3F0FA] to-[#EDE7F6] rounded-lg p-6 sm:p-8 border-2 border-[#F8BBD0]">
-                <div className="text-center mb-6">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#E91E63] to-[#F06292] rounded-full mb-4">
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#424242] mb-2">
-                    Elige tu plan y apoya el proyecto
-                  </h3>
-                  <p className="text-sm sm:text-base text-[#9E9E9E] max-w-2xl mx-auto">
-                    Selecciona el plan de eJoi que mejor se adapte a ti y contribuye al desarrollo del proyecto. 
-                    Tu apoyo nos ayuda a hacer de eJoi una realidad.
-                  </p>
-                </div>
-                
-                <div className="flex flex-col items-center gap-4">
-                  <a
-                    href="https://ko-fi.com/ejoi"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-[#E91E63] to-[#F06292] text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-base sm:text-lg"
-                  >
-                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M23.881 8.948c-.169-4.225-3.663-7.599-7.881-7.599-4.317 0-7.713 3.521-7.881 7.599-.052.52-.052.52-.052 1.052 0 .532 0 .532.052 1.052.168 4.078 3.564 7.599 7.881 7.599 4.218 0 7.712-3.374 7.881-7.599.052-.52.052-.52.052-1.052 0-.532 0-.532-.052-1.052zm-1.904 1.104c-.052.52-.052.52-.052 1.052 0 .532 0 .532.052 1.052.126 3.126-2.438 5.699-5.526 5.699-3.087 0-5.652-2.573-5.777-5.699-.052-.52-.052-.52-.052-1.052 0-.532 0-.532.052-1.052.125-3.126 2.69-5.699 5.777-5.699 3.088 0 5.652 2.573 5.526 5.699z"/>
-                      <path d="M12.029 5.111c-1.916 0-3.47 1.554-3.47 3.47s1.554 3.47 3.47 3.47 3.47-1.554 3.47-3.47-1.554-3.47-3.47-3.47zm0 5.888c-1.333 0-2.418-1.085-2.418-2.418s1.085-2.418 2.418-2.418 2.418 1.085 2.418 2.418-1.085 2.418-2.418 2.418z"/>
-                    </svg>
-                    Ver planes en Ko-fi
-                  </a>
-                  <p className="text-xs sm:text-sm text-[#9E9E9E] text-center">
-                    Al hacer clic, serás redirigido a Ko-fi donde podrás elegir tu plan y realizar el pago de forma segura.
-                  </p>
-                </div>
               </div>
 
               {/* Botón de envío */}
