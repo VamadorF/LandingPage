@@ -14,7 +14,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {/* Brand */}
           <div className="col-span-1 sm:col-span-2 md:col-span-2">
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Joi</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">eJoi</h3>
             <p className="text-sm sm:text-base text-gray-400 mb-4 sm:mb-5 max-w-md">
               Tu compañera virtual con memoria. Una relación continua diseñada para crear 
               hábito y apego mediante continuidad emocional.
@@ -23,7 +23,7 @@ export default function Footer() {
               {/* Placeholder para redes sociales */}
               <a
                 href="#"
-                className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors duration-200"
+                className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#E91E63] transition-colors duration-200"
                 aria-label="Facebook"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -32,7 +32,7 @@ export default function Footer() {
               </a>
               <a
                 href="#"
-                className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors duration-200"
+                className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#E91E63] transition-colors duration-200"
                 aria-label="Twitter"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -41,7 +41,7 @@ export default function Footer() {
               </a>
               <a
                 href="#"
-                className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors duration-200"
+                className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#E91E63] transition-colors duration-200"
                 aria-label="Instagram"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -87,20 +87,14 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-3 sm:mb-4 text-base sm:text-lg">Legal</h4>
             <ul className="space-y-2 sm:space-y-3">
               <li>
-                <button
-                  onClick={() => scrollToSection('terminos')}
-                  className="min-h-[44px] text-sm sm:text-base hover:text-white transition-colors duration-200 text-left py-2"
-                >
-                  Términos de Servicio
-                </button>
+                <a href="#terminos" className="min-h-[44px] block text-sm sm:text-base hover:text-white transition-colors duration-200 py-2">
+                  Términos y condiciones
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection('privacidad')}
-                  className="min-h-[44px] text-sm sm:text-base hover:text-white transition-colors duration-200 text-left py-2"
-                >
+                <a href="#privacidad" className="min-h-[44px] block text-sm sm:text-base hover:text-white transition-colors duration-200 py-2">
                   Política de privacidad
-                </button>
+                </a>
               </li>
               <li>
                 <a href="#contacto" className="min-h-[44px] block text-sm sm:text-base hover:text-white transition-colors duration-200 py-2">
@@ -112,7 +106,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-xs sm:text-sm text-gray-400">
-          <p>&copy; {currentYear} Joi. Todos los derechos reservados.</p>
+          <p>&copy; {currentYear} eJoi. Todos los derechos reservados.</p>
           <p className="mt-2">Diseñado y desarrollado con ❤️ en Chile</p>
         </div>
       </div>

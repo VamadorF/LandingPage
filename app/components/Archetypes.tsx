@@ -68,13 +68,13 @@ export default function Archetypes() {
   }, [])
 
   return (
-    <section id="arquetipos" className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 to-purple-50">
+    <section id="arquetipos" className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#F5F5F5] to-[#F3F0FA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 sm:mb-12 md:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#424242] mb-3 sm:mb-4">
             Elige tu compañera
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-6 sm:mb-8 px-2">
+          <p className="text-base sm:text-lg md:text-xl text-[#9E9E9E] max-w-2xl mx-auto mb-6 sm:mb-8 px-2">
             Cada arquetipo tiene su personalidad única. Encuentra la que mejor se conecte contigo.
           </p>
 
@@ -84,8 +84,8 @@ export default function Archetypes() {
               onClick={() => setSelectedStyle('realista')}
               className={`min-h-[44px] px-4 sm:px-6 py-2 rounded-full font-medium transition-all duration-300 text-sm sm:text-base ${
                 selectedStyle === 'realista'
-                  ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bg-gradient-to-r from-[#E91E63] to-[#F06292] text-white shadow-md'
+                  : 'text-[#9E9E9E] hover:text-[#424242]'
               }`}
             >
               Realista
@@ -94,8 +94,8 @@ export default function Archetypes() {
               onClick={() => setSelectedStyle('anime')}
               className={`min-h-[44px] px-4 sm:px-6 py-2 rounded-full font-medium transition-all duration-300 text-sm sm:text-base ${
                 selectedStyle === 'anime'
-                  ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bg-gradient-to-r from-[#E91E63] to-[#F06292] text-white shadow-md'
+                  : 'text-[#9E9E9E] hover:text-[#424242]'
             }`}
             >
               Anime
@@ -132,10 +132,10 @@ export default function Archetypes() {
               </div>
               
               <div className="p-4 sm:p-6 pb-20 sm:pb-6">
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 sm:mb-3">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#424242] mb-2 sm:mb-3">
                   {archetype.name}
                 </h3>
-                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                <p className="text-sm sm:text-base text-[#9E9E9E] leading-relaxed">
                   {archetype.description}
                 </p>
               </div>
@@ -151,7 +151,7 @@ export default function Archetypes() {
                     const formSection = document.getElementById('preregister')
                     formSection?.scrollIntoView({ behavior: 'smooth' })
                   }}
-                  className="w-full min-h-[44px] px-4 py-2.5 sm:py-2 bg-white text-purple-600 font-semibold rounded-full hover:bg-purple-50 transition-colors duration-200 text-sm sm:text-base shadow-md sm:shadow-none"
+                  className="w-full min-h-[44px] px-4 py-2.5 sm:py-2 bg-white text-[#E91E63] font-semibold rounded-full hover:bg-[#F3F0FA] transition-colors duration-200 text-sm sm:text-base shadow-md sm:shadow-none"
                 >
                   Elegir esta compañera
                 </button>

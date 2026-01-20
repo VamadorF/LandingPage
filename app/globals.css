@@ -22,7 +22,7 @@ body {
 }
 
 body {
-  color: #1f2937;
+  color: #424242;
   background: #ffffff;
 }
 
@@ -74,7 +74,7 @@ button, a {
 
 /* Focus styles for accessibility */
 *:focus-visible {
-  outline: 2px solid #9333ea;
+  outline: 2px solid #E91E63;
   outline-offset: 2px;
 }
 
@@ -84,16 +84,16 @@ button, a {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #F3F0FA;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c4b5fd;
+  background: #EDE7F6;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a78bfa;
+  background: #F8BBD0;
 }
 
 /* Blob animation for Hero section */
