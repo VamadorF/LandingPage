@@ -30,7 +30,7 @@ export default function PreregisterForm() {
     { id: 'ejecutiva', name: 'La Ejecutiva' },
     { id: 'musa', name: 'La Musa' },
     { id: 'porrista', name: 'La Porrista' },
-    { id: 'otra', name: 'Otra' },
+    { id: 'otro', name: 'Otro...' },
   ]
 
   const archetypesMasculinos = [
@@ -38,14 +38,14 @@ export default function PreregisterForm() {
     { id: 'artesano', name: 'El Artesano' },
     { id: 'intelectual', name: 'El Intelectual' },
     { id: 'protector', name: 'El Protector' },
-    { id: 'otra', name: 'Otra' },
+    { id: 'otro', name: 'Otro...' },
   ]
 
   const archetypes = formData.generoAvatar === 'masculino' 
     ? archetypesMasculinos 
     : formData.generoAvatar === 'femenino'
     ? archetypesFemeninos
-    : [...archetypesFemeninos, ...archetypesMasculinos.filter(a => a.id !== 'otra'), { id: 'otra', name: 'Otra' }]
+    : []
 
   const validateForm = (): boolean => {
     const newErrors: Partial<Record<keyof FormData, string>> = {}
@@ -58,6 +58,10 @@ export default function PreregisterForm() {
       newErrors.email = 'El email es requerido'
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'El email no es válido'
+    }
+
+    if (!formData.generoAvatar) {
+      newErrors.generoAvatar = 'Debes seleccionar un género de avatar'
     }
 
     if (!formData.arquetipo) {
@@ -238,31 +242,6 @@ export default function PreregisterForm() {
                 )}
               </div>
 
-              {/* Arquetipo */}
-              <div>
-                <label htmlFor="arquetipo" className="block text-sm font-medium text-[#424242] mb-2">
-                  Personalidad preferida <span className="text-red-500">*</span>
-                </label>
-                <select
-                  id="arquetipo"
-                  value={formData.arquetipo}
-                  onChange={(e) => handleChange('arquetipo', e.target.value)}
-                  className={`w-full text-base px-4 py-3.5 sm:py-3 rounded-lg border min-h-[48px] ${
-                    errors.arquetipo ? 'border-red-500' : 'border-[#F5F5F5]'
-                  } focus:ring-2 focus:ring-[#E91E63] focus:border-transparent transition-all bg-white`}
-                >
-                  <option value="">Tu personalidad más querida</option>
-                  {archetypes.map((arch) => (
-                    <option key={arch.id} value={arch.id}>
-                      {arch.name}
-                    </option>
-                  ))}
-                </select>
-                {errors.arquetipo && (
-                  <p className="mt-1 text-sm text-red-500">{errors.arquetipo}</p>
-                )}
-              </div>
-
               {/* Estilo */}
               <div>
                 <label className="block text-sm font-medium text-[#424242] mb-3">
@@ -297,7 +276,7 @@ export default function PreregisterForm() {
               {/* Género de avatar */}
               <div>
                 <label className="block text-sm font-medium text-[#424242] mb-3">
-                  Género de avatar preferido
+                  Género de avatar preferido <span className="text-red-500">*</span>
                 </label>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <label className="flex items-center min-h-[44px] cursor-pointer">
@@ -336,24 +315,45 @@ export default function PreregisterForm() {
                     />
                     <span className="text-base text-[#424242]">Masculino</span>
                   </label>
-                  <label className="flex items-center min-h-[44px] cursor-pointer">
-                    <input
-                      type="radio"
-                      name="generoAvatar"
-                      value=""
-                      checked={formData.generoAvatar === undefined}
-                      onChange={(e) => {
-                        handleChange('generoAvatar', undefined)
-                        // Reset arquetipo cuando cambia el género
-                        if (formData.arquetipo) {
-                          handleChange('arquetipo', '')
-                        }
-                      }}
-                      className="mr-3 w-5 h-5 text-[#E91E63] focus:ring-[#E91E63] cursor-pointer"
-                    />
-                    <span className="text-base text-[#424242]">Sin preferencia</span>
-                  </label>
                 </div>
+                {errors.generoAvatar && (
+                  <p className="mt-1 text-sm text-red-500">{errors.generoAvatar}</p>
+                )}
+              </div>
+
+              {/* Arquetipo */}
+              <div>
+                <label htmlFor="arquetipo" className="block text-sm font-medium text-[#424242] mb-2">
+                  Personalidad preferida <span className="text-red-500">*</span>
+                </label>
+                <select
+                  id="arquetipo"
+                  value={formData.arquetipo}
+                  onChange={(e) => handleChange('arquetipo', e.target.value)}
+                  disabled={!formData.generoAvatar}
+                  className={`w-full text-base px-4 py-3.5 sm:py-3 rounded-lg border min-h-[48px] ${
+                    errors.arquetipo ? 'border-red-500' : 'border-[#F5F5F5]'
+                  } focus:ring-2 focus:ring-[#E91E63] focus:border-transparent transition-all bg-white ${
+                    !formData.generoAvatar ? 'opacity-50 cursor-not-allowed bg-gray-100' : ''
+                  }`}
+                >
+                  <option value="">
+                    {formData.generoAvatar ? 'Tu personalidad más querida' : 'Primero selecciona un género'}
+                  </option>
+                  {archetypes.map((arch) => (
+                    <option key={arch.id} value={arch.id}>
+                      {arch.name}
+                    </option>
+                  ))}
+                </select>
+                {errors.arquetipo && (
+                  <p className="mt-1 text-sm text-red-500">{errors.arquetipo}</p>
+                )}
+                {!formData.generoAvatar && (
+                  <p className="mt-1 text-sm text-[#9E9E9E]">
+                    Por favor, selecciona primero un género de avatar para habilitar esta opción
+                  </p>
+                )}
               </div>
 
               {/* Términos y condiciones */}
