@@ -7,6 +7,7 @@ interface FormData {
   email: string
   arquetipo: string
   estilo: 'realista' | 'anime'
+  generoAvatar?: 'masculino' | 'femenino'
   aceptaTerminos: boolean
 }
 
@@ -16,6 +17,7 @@ export default function PreregisterForm() {
     email: '',
     arquetipo: '',
     estilo: 'realista',
+    generoAvatar: undefined,
     aceptaTerminos: false,
   })
 
@@ -23,13 +25,27 @@ export default function PreregisterForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
-  const archetypes = [
+  const archetypesFemeninos = [
     { id: 'anfitriona', name: 'La Anfitriona' },
     { id: 'ejecutiva', name: 'La Ejecutiva' },
     { id: 'musa', name: 'La Musa' },
     { id: 'porrista', name: 'La Porrista' },
     { id: 'otra', name: 'Otra' },
   ]
+
+  const archetypesMasculinos = [
+    { id: 'ejecutivo', name: 'El Ejecutivo' },
+    { id: 'artesano', name: 'El Artesano' },
+    { id: 'intelectual', name: 'El Intelectual' },
+    { id: 'protector', name: 'El Protector' },
+    { id: 'otra', name: 'Otra' },
+  ]
+
+  const archetypes = formData.generoAvatar === 'masculino' 
+    ? archetypesMasculinos 
+    : formData.generoAvatar === 'femenino'
+    ? archetypesFemeninos
+    : [...archetypesFemeninos, ...archetypesMasculinos.filter(a => a.id !== 'otra'), { id: 'otra', name: 'Otra' }]
 
   const validateForm = (): boolean => {
     const newErrors: Partial<Record<keyof FormData, string>> = {}
@@ -83,6 +99,7 @@ export default function PreregisterForm() {
         email: '',
         arquetipo: '',
         estilo: 'realista',
+        generoAvatar: undefined,
         aceptaTerminos: false,
       })
     } catch (error) {
@@ -92,7 +109,7 @@ export default function PreregisterForm() {
     }
   }
 
-  const handleChange = (field: keyof FormData, value: string | boolean) => {
+  const handleChange = (field: keyof FormData, value: string | boolean | undefined) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: undefined }))
@@ -273,6 +290,68 @@ export default function PreregisterForm() {
                       className="mr-3 w-5 h-5 text-[#E91E63] focus:ring-[#E91E63] cursor-pointer"
                     />
                     <span className="text-base text-[#424242]">Anime</span>
+                  </label>
+                </div>
+              </div>
+
+              {/* Género de avatar */}
+              <div>
+                <label className="block text-sm font-medium text-[#424242] mb-3">
+                  Género de avatar preferido
+                </label>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <label className="flex items-center min-h-[44px] cursor-pointer">
+                    <input
+                      type="radio"
+                      name="generoAvatar"
+                      value="femenino"
+                      checked={formData.generoAvatar === 'femenino'}
+                      onChange={(e) => {
+                        const value = e.target.value === 'femenino' ? 'femenino' : undefined
+                        handleChange('generoAvatar', value)
+                        // Reset arquetipo cuando cambia el género
+                        if (formData.arquetipo) {
+                          handleChange('arquetipo', '')
+                        }
+                      }}
+                      className="mr-3 w-5 h-5 text-[#E91E63] focus:ring-[#E91E63] cursor-pointer"
+                    />
+                    <span className="text-base text-[#424242]">Femenino</span>
+                  </label>
+                  <label className="flex items-center min-h-[44px] cursor-pointer">
+                    <input
+                      type="radio"
+                      name="generoAvatar"
+                      value="masculino"
+                      checked={formData.generoAvatar === 'masculino'}
+                      onChange={(e) => {
+                        const value = e.target.value === 'masculino' ? 'masculino' : undefined
+                        handleChange('generoAvatar', value)
+                        // Reset arquetipo cuando cambia el género
+                        if (formData.arquetipo) {
+                          handleChange('arquetipo', '')
+                        }
+                      }}
+                      className="mr-3 w-5 h-5 text-[#E91E63] focus:ring-[#E91E63] cursor-pointer"
+                    />
+                    <span className="text-base text-[#424242]">Masculino</span>
+                  </label>
+                  <label className="flex items-center min-h-[44px] cursor-pointer">
+                    <input
+                      type="radio"
+                      name="generoAvatar"
+                      value=""
+                      checked={formData.generoAvatar === undefined}
+                      onChange={(e) => {
+                        handleChange('generoAvatar', undefined)
+                        // Reset arquetipo cuando cambia el género
+                        if (formData.arquetipo) {
+                          handleChange('arquetipo', '')
+                        }
+                      }}
+                      className="mr-3 w-5 h-5 text-[#E91E63] focus:ring-[#E91E63] cursor-pointer"
+                    />
+                    <span className="text-base text-[#424242]">Sin preferencia</span>
                   </label>
                 </div>
               </div>
