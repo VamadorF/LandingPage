@@ -41,6 +41,16 @@ export async function submitPreregistro(input: unknown) {
     if ((error as any).code === "23505") {
       return { ok: false, code: "DUPLICATE", message: "Este email ya está registrado" };
     }
+
+    // Log de errores de base de datos no esperados (solo en entornos no productivos)
+    if (process.env.NODE_ENV !== "production") {
+      console.error("[submitPreregistro] Error al guardar el preregistro en la base de datos", {
+        code: (error as any).code,
+        message: (error as any).message ?? (error as any).toString?.(),
+        details: (error as any).details,
+        hint: (error as any).hint,
+      });
+    }
     return { ok: false, code: "DB", message: "Error al guardar el registro" };
   }
 
