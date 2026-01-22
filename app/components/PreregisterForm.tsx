@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, FormEvent } from 'react'
+import { supabase } from '@/lib/supabaseClient'
 
 interface FormData {
   nombre: string
@@ -24,6 +25,7 @@ export default function PreregisterForm() {
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState<string>('')
 
   const archetypesFemeninos = [
     { id: 'anfitriona', name: 'La Anfitriona' },
@@ -85,17 +87,34 @@ export default function PreregisterForm() {
 
     setIsSubmitting(true)
     setSubmitStatus('idle')
+    setErrorMessage('')
 
     try {
-      // TODO: Conectar con API backend cuando esté disponible
-      // const response = await fetch('/api/preregister', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData),
-      // })
+      // Insert into Supabase pre_registros table
+      const { error } = await supabase
+        .from('pre_registros')
+        .insert([
+          {
+            nombre: formData.nombre,
+            email: formData.email,
+            arquetipo: formData.arquetipo,
+            estilo: formData.estilo,
+            genero_avatar: formData.generoAvatar,
+            acepta_terminos: formData.aceptaTerminos,
+          },
+        ])
 
-      // Simulación de envío
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      if (error) {
+        // Check for duplicate email error (unique constraint violation)
+        if (error.code === '23505') {
+          setErrorMessage('Este correo ya está registrado')
+          setSubmitStatus('error')
+        } else {
+          setErrorMessage('Hubo un error al enviar el formulario. Por favor, intenta nuevamente.')
+          setSubmitStatus('error')
+        }
+        return
+      }
 
       setSubmitStatus('success')
       setFormData({
@@ -106,7 +125,8 @@ export default function PreregisterForm() {
         generoAvatar: undefined,
         aceptaTerminos: false,
       })
-    } catch (error) {
+    } catch {
+      setErrorMessage('Hubo un error al enviar el formulario. Por favor, intenta nuevamente.')
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
@@ -142,10 +162,10 @@ export default function PreregisterForm() {
                   </svg>
                 </div>
                 <h3 className="text-3xl sm:text-4xl font-bold text-[#424242] mb-3">
-                  ¡Preregistro exitoso! 🎉
+                  ¡Registrado! 🎉
                 </h3>
                 <p className="text-lg text-[#9E9E9E] mb-2">
-                  ¡Gracias por unirte a esta aventura!
+                  Te avisaremos cuando haya acceso
                 </p>
                 <p className="text-base text-[#9E9E9E] mb-8">
                   Te contactaremos pronto con más información sobre el lanzamiento.
@@ -406,7 +426,7 @@ export default function PreregisterForm() {
               {submitStatus === 'error' && (
                 <div className="bg-red-50 border border-red-200 rounded-lg p-4">
                   <p className="text-sm text-red-600">
-                    Hubo un error al enviar el formulario. Por favor, intenta nuevamente.
+                    {errorMessage || 'Hubo un error al enviar el formulario. Por favor, intenta nuevamente.'}
                   </p>
                 </div>
               )}

@@ -24,6 +24,34 @@ eJoi ofrece una relación continua donde tu compañera virtual recuerda tus gust
 
 ## Desarrollo
 
+### Configuración de Variables de Entorno
+
+Antes de ejecutar la aplicación, necesitas configurar las variables de entorno para conectar con Supabase:
+
+1. Crea un archivo `.env.local` en la raíz del proyecto
+2. Agrega las siguientes variables:
+
+```
+NEXT_PUBLIC_SUPABASE_URL=tu_url_de_supabase
+NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_clave_publica_de_supabase
+```
+
+**Nota:** Las credenciales de Supabase se proporcionan por separado. Contacta al administrador del proyecto si necesitas acceso.
+
+### Estructura de la Tabla de Supabase
+
+El formulario de preregistro inserta datos en la tabla `pre_registros` con las siguientes columnas:
+- `nombre` (text): Nombre completo del usuario
+- `email` (text, unique): Correo electrónico del usuario
+- `arquetipo` (text): Personalidad preferida seleccionada
+- `estilo` (text): Estilo de avatar (realista o anime)
+- `genero_avatar` (text): Género del avatar (masculino o femenino)
+- `acepta_terminos` (boolean): Confirmación de aceptación de términos
+
+La tabla debe tener una restricción única en la columna `email` para evitar registros duplicados.
+
+### Comandos de Desarrollo
+
 ```bash
 # Instalar dependencias
 npm install
