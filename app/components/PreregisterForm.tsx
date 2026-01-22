@@ -3,6 +3,9 @@
 import { useState, FormEvent } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 
+// PostgreSQL error codes
+const POSTGRES_UNIQUE_VIOLATION = '23505'
+
 interface FormData {
   nombre: string
   email: string
@@ -106,7 +109,7 @@ export default function PreregisterForm() {
 
       if (error) {
         // Check for duplicate email error (unique constraint violation)
-        if (error.code === '23505') {
+        if (error.code === POSTGRES_UNIQUE_VIOLATION) {
           setErrorMessage('Este correo ya está registrado')
           setSubmitStatus('error')
         } else {
@@ -125,7 +128,8 @@ export default function PreregisterForm() {
         generoAvatar: undefined,
         aceptaTerminos: false,
       })
-    } catch {
+    } catch (error) {
+      console.error('Error submitting form:', error)
       setErrorMessage('Hubo un error al enviar el formulario. Por favor, intenta nuevamente.')
       setSubmitStatus('error')
     } finally {
