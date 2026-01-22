@@ -26,34 +26,43 @@ export async function submitPreregistro(input: unknown) {
 
   const payload = validation.data;
 
-  // Inserción con manejo de errores
-  const { error } = await supabaseServer.from("preregistros").insert({
-    nombre: payload.nombre,
-    email: payload.email,
-    arquetipo: payload.arquetipo,
-    estilo: payload.estilo,
-    genero_avatar: payload.generoAvatar,
-    acepta_terminos: payload.aceptaTerminos,
-  });
+  try {
+    // Inserción con manejo de errores
+    const { error, data } = await supabaseServer.from("preregistros").insert({
+      nombre: payload.nombre,
+      email: payload.email,
+      arquetipo: payload.arquetipo,
+      estilo: payload.estilo,
+      genero_avatar: payload.generoAvatar,
+      acepta_terminos: payload.aceptaTerminos,
+    });
 
-  if (error) {
-    // 23505 = unique violation en Postgres
-    if ((error as any).code === "23505") {
-      return { ok: false, code: "DUPLICATE", message: "Este email ya está registrado" };
-    }
+    if (error) {
+      // 23505 = unique violation en Postgres
+      if ((error as any).code === "23505") {
+        return { ok: false, code: "DUPLICATE", message: "Este email ya está registrado" };
+      }
 
-    // Log de errores de base de datos no esperados (solo en entornos no productivos)
-    if (process.env.NODE_ENV !== "production") {
-      console.error("[submitPreregistro] Error al guardar el preregistro en la base de datos", {
+      // Log de errores de base de datos (útil para debugging)
+      console.error("[submitPreregistro] Error de Supabase:", {
         code: (error as any).code,
-        message: (error as any).message ?? (error as any).toString?.(),
+        message: (error as any).message,
         details: (error as any).details,
         hint: (error as any).hint,
       });
-    }
-    return { ok: false, code: "DB", message: "Error al guardar el registro" };
-  }
 
-  return { ok: true };
+      return { ok: false, code: "DB", message: "Error al guardar el registro. Por favor, intenta nuevamente." };
+    }
+
+    return { ok: true };
+  } catch (err) {
+    // Capturar errores inesperados (ej: variables de entorno faltantes)
+    console.error("[submitPreregistro] Error inesperado:", err);
+    return { 
+      ok: false, 
+      code: "UNEXPECTED", 
+      message: "Error inesperado. Por favor, contacta al soporte si el problema persiste." 
+    };
+  }
 }
 
