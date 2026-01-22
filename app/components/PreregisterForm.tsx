@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, FormEvent } from 'react'
+import { useState, FormEvent, startTransition } from 'react'
+import { submitPreregistro } from '@/app/actions/preregistro'
 
 interface FormData {
   nombre: string
@@ -24,6 +25,7 @@ export default function PreregisterForm() {
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState<string>('')
 
   const archetypesFemeninos = [
     { id: 'anfitriona', name: 'La Anfitriona' },
@@ -83,20 +85,23 @@ export default function PreregisterForm() {
       return
     }
 
-    setIsSubmitting(true)
+    // Limpiar estados anteriores
     setSubmitStatus('idle')
+    setErrorMessage('')
+    setIsSubmitting(true)
 
-    try {
-      // TODO: Conectar con API backend cuando esté disponible
-      // const response = await fetch('/api/preregister', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData),
-      // })
+    startTransition(async () => {
+      try {
+        const result = await submitPreregistro({
+          nombre: formData.nombre,
+          email: formData.email,
+          arquetipo: formData.arquetipo,
+          estilo: formData.estilo,
+          generoAvatar: formData.generoAvatar,
+          aceptaTerminos: formData.aceptaTerminos,
+        })
 
-      // Simulación de envío
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-
+        if (result.ok) {
       setSubmitStatus('success')
       setFormData({
         nombre: '',
@@ -106,11 +111,17 @@ export default function PreregisterForm() {
         generoAvatar: undefined,
         aceptaTerminos: false,
       })
+        } else {
+          setSubmitStatus('error')
+          setErrorMessage(result.message || 'Error al enviar el formulario')
+        }
     } catch (error) {
       setSubmitStatus('error')
+        setErrorMessage('Error inesperado. Por favor, intenta nuevamente.')
     } finally {
       setIsSubmitting(false)
     }
+    })
   }
 
   const handleChange = (field: keyof FormData, value: string | boolean | undefined) => {
@@ -403,10 +414,10 @@ export default function PreregisterForm() {
                 )}
               </button>
 
-              {submitStatus === 'error' && (
+              {submitStatus === 'error' && errorMessage && (
                 <div className="bg-red-50 border border-red-200 rounded-lg p-4">
                   <p className="text-sm text-red-600">
-                    Hubo un error al enviar el formulario. Por favor, intenta nuevamente.
+                    {errorMessage}
                   </p>
                 </div>
               )}
