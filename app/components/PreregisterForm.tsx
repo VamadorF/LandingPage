@@ -102,25 +102,25 @@ export default function PreregisterForm() {
         })
 
         if (result.ok) {
-          setSubmitStatus('success')
-          setFormData({
-            nombre: '',
-            email: '',
-            arquetipo: '',
-            estilo: 'realista',
-            generoAvatar: undefined,
-            aceptaTerminos: false,
-          })
+      setSubmitStatus('success')
+      setFormData({
+        nombre: '',
+        email: '',
+        arquetipo: '',
+        estilo: 'realista',
+        generoAvatar: undefined,
+        aceptaTerminos: false,
+      })
         } else {
           setSubmitStatus('error')
           setErrorMessage(result.message || 'Error al enviar el formulario')
         }
-      } catch (error) {
-        setSubmitStatus('error')
+    } catch (error) {
+      setSubmitStatus('error')
         setErrorMessage('Error inesperado. Por favor, intenta nuevamente.')
-      } finally {
-        setIsSubmitting(false)
-      }
+    } finally {
+      setIsSubmitting(false)
+    }
     })
   }
 
