@@ -117,7 +117,7 @@ export default function PreregisterForm() {
         }
     } catch (error) {
       setSubmitStatus('error')
-        setErrorMessage('Error inesperado. Por favor, intenta nuevamente.')
+      setErrorMessage('Error inesperado. Por favor, intenta nuevamente.')
     } finally {
       setIsSubmitting(false)
     }
