@@ -16,52 +16,79 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#F3F0FA] via-[#EDE7F6] to-[#F3F0FA] py-12 md:py-20">
-      {/* Background decoration */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20 md:pt-24 py-8 sm:py-12 md:py-20" style={{
+      background: 'radial-gradient(ellipse at bottom left, rgba(186, 176, 237, 0.18) 0%, rgba(186, 176, 237, 0.10) 30%, rgba(242, 10, 100, 0.04) 50%, rgba(255, 255, 255, 0) 75%), #FEFEFE'
+    }}>
+      {/* Background decoration - Lavanda atmosférica suave con más color */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#F8BBD0] rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#EDE7F6] rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#F3F0FA] rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob" style={{ backgroundColor: 'rgba(186, 176, 237, 0.20)' }}></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob animation-delay-2000" style={{ backgroundColor: 'rgba(186, 176, 237, 0.18)' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-4000" style={{ backgroundColor: 'rgba(186, 176, 237, 0.15)' }}></div>
+        {/* Elementos decorativos adicionales con magenta suave */}
+        <div className="absolute top-20 right-20 w-64 h-64 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-1000" style={{ backgroundColor: 'rgba(242, 10, 100, 0.08)' }}></div>
+        <div className="absolute bottom-20 left-20 w-72 h-72 rounded-full mix-blend-multiply filter blur-3xl opacity-25 animate-blob animation-delay-3000" style={{ backgroundColor: 'rgba(242, 10, 100, 0.06)' }}></div>
       </div>
 
       {/* Content */}
-      <div className={`relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-[#424242] mb-4 md:mb-6 leading-tight">
+      <div className={`relative z-10 max-w-4xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        {/* Logo */}
+        <div className="mb-4 sm:mb-6 md:mb-8 flex justify-center">
+          <div className="relative h-12 sm:h-16 md:h-24 lg:h-32 xl:h-40 w-auto animate-fade-in-up">
+            <Image
+              src="/logos/eJoi_logos-01.png"
+              alt="eJoi"
+              width={320}
+              height={160}
+              className="h-full w-auto object-contain drop-shadow-lg"
+              priority
+            />
+          </div>
+        </div>
+
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-bold text-ejoi-gris mb-3 sm:mb-4 md:mb-6 leading-tight px-2">
           Tu compañera virtual
-          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#E91E63] to-[#F06292]">
+          <span className="block" style={{ color: '#F20A64' }}>
             con memoria
           </span>
         </h1>
         
-        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#424242] mb-6 md:mb-8 max-w-2xl mx-auto leading-relaxed px-2">
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-ejoi-gris mb-4 sm:mb-6 md:mb-8 max-w-2xl mx-auto leading-relaxed px-2" style={{ color: 'rgba(60, 60, 59, 0.85)' }}>
           Una relación continua, no un chatbot. Tu compañera recuerda tus gustos, 
           hitos y contexto para que el vínculo evolucione y no se reinicie en cada conversación.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-6 md:mb-8">
+        <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 md:gap-4 justify-center items-center mb-4 sm:mb-6 md:mb-8">
           <button
             onClick={scrollToForm}
-            className="w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#E91E63] to-[#F06292] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-base sm:text-lg"
+            className="w-full sm:w-auto min-h-[44px] px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-white font-semibold rounded-full shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-300 text-sm sm:text-base md:text-lg"
+            style={{ 
+              backgroundColor: '#F20A64',
+              boxShadow: '0 4px 14px rgba(242, 10, 100, 0.25)'
+            }}
           >
             Preregístrate ahora
           </button>
           <a
             href="#caracteristicas"
-            className="w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3 sm:py-4 bg-white text-[#424242] font-semibold rounded-full shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300 text-base sm:text-lg border border-[#F5F5F5]"
+            className="w-full sm:w-auto min-h-[44px] px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-white text-ejoi-gris font-semibold rounded-full shadow-sm hover:shadow-md transform hover:scale-[1.02] transition-all duration-300 text-sm sm:text-base md:text-lg border"
+            style={{ 
+              borderColor: 'rgba(186, 176, 237, 0.2)',
+              color: '#3C3C3B'
+            }}
           >
             Conoce más
           </a>
         </div>
 
         {/* App Store Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-6 md:mb-8">
+        <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 md:gap-4 justify-center items-center mb-4 sm:mb-6 md:mb-8">
           <a
             href="https://apple.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto min-h-[48px] flex items-center justify-center gap-2 sm:gap-3 bg-black text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group"
+            className="w-full sm:w-auto min-h-[44px] flex items-center justify-center gap-2 sm:gap-3 bg-black text-white px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group"
           >
-            <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0 bg-transparent">
+            <div className="relative w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 flex-shrink-0 bg-transparent">
               <Image
                 src="/logos/Apple_logo.png"
                 alt="Apple"
@@ -72,17 +99,17 @@ export default function Hero() {
               />
             </div>
             <div className="flex flex-col items-start">
-              <span className="text-[10px] sm:text-xs text-gray-400">Descarga en</span>
-              <span className="text-xs sm:text-sm font-semibold">App Store</span>
+              <span className="text-[9px] sm:text-[10px] md:text-xs text-gray-400">Descarga en</span>
+              <span className="text-[11px] sm:text-xs md:text-sm font-semibold">App Store</span>
             </div>
           </a>
           <a
             href="https://android.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto min-h-[48px] flex items-center justify-center gap-2 sm:gap-3 bg-black text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group"
+            className="w-full sm:w-auto min-h-[44px] flex items-center justify-center gap-2 sm:gap-3 bg-black text-white px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group"
           >
-            <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0">
+            <div className="relative w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 flex-shrink-0">
               <Image
                 src="/logos/Android_logo.png"
                 alt="Android"
@@ -92,27 +119,27 @@ export default function Hero() {
               />
             </div>
             <div className="flex flex-col items-start">
-              <span className="text-[10px] sm:text-xs text-gray-400">Disponible en</span>
-              <span className="text-xs sm:text-sm font-semibold">Google Play</span>
+              <span className="text-[9px] sm:text-[10px] md:text-xs text-gray-400">Disponible en</span>
+              <span className="text-[11px] sm:text-xs md:text-sm font-semibold">Google Play</span>
             </div>
           </a>
         </div>
 
-        <div className="mt-8 md:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 text-xs sm:text-sm text-[#9E9E9E]">
+        <div className="mt-6 sm:mt-8 md:mt-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 text-[11px] sm:text-xs md:text-sm" style={{ color: 'rgba(60, 60, 59, 0.6)' }}>
           <div className="flex items-center gap-2">
-            <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#F20A64' }}>
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
             <span>Memoria persistente</span>
           </div>
           <div className="flex items-center gap-2">
-            <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#F20A64' }}>
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
             <span>Avatar personalizado</span>
           </div>
           <div className="flex items-center gap-2">
-            <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#F20A64' }}>
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
             <span>Privacidad garantizada</span>
