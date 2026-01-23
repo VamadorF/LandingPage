@@ -8,63 +8,35 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Colores primarios (marca / énfasis)
-        brand: {
-          DEFAULT: '#E91E63', // Fucsia-magenta principal
-          light: '#F06292',   // Rosa intenso degradado
-          lighter: '#F8BBD0',  // Rosa claro
+        // Paleta oficial eJoi
+        ejoi: {
+          // Magenta - Solo para acentos, estados activos, highlights
+          magenta: '#F20A64',
+          'magenta-soft': 'rgba(242, 10, 100, 0.12)',
+          'magenta-ultra-soft': 'rgba(242, 10, 100, 0.08)',
+          'magenta-medium': 'rgba(242, 10, 100, 0.20)',
+          
+          // Lavanda - Color atmosférico principal
+          lavanda: '#BAB0ED',
+          'lavanda-light': 'rgba(186, 176, 237, 0.15)',
+          'lavanda-ultra-light': 'rgba(186, 176, 237, 0.08)',
+          'lavanda-medium': 'rgba(186, 176, 237, 0.25)',
+          
+          // Gris neutro - Solo texto y elementos funcionales
+          gris: '#3C3C3B',
+          'gris-light': 'rgba(60, 60, 59, 0.7)',
+          'gris-lighter': 'rgba(60, 60, 59, 0.5)',
         },
-        // Colores secundarios (fondos y UI suave)
-        background: {
-          lavender: {
-            light: '#F3F0FA',  // Lila muy claro / lavanda
-            DEFAULT: '#EDE7F6', // Lavanda claro
-          },
-          gray: {
-            light: '#F5F5F5',  // Gris muy claro (cards / fondos)
-          },
-        },
-        // Colores neutros
-        neutral: {
-          white: '#FFFFFF',     // Blanco puro
-          gray: {
-            medium: '#9E9E9E',  // Gris medio (texto secundario)
-            dark: '#424242',     // Gris oscuro (texto principal)
-          },
-          black: {
-            soft: '#1F1F1F',     // Negro suave (mockups / marcos)
-          },
-        },
-        // Mantener compatibilidad con clases existentes
-        primary: {
-          DEFAULT: '#E91E63',
-          50: '#F3F0FA',
-          100: '#EDE7F6',
-          200: '#F8BBD0',
-          300: '#F8BBD0',
-          400: '#F06292',
-          500: '#E91E63',
-          600: '#E91E63',
-          700: '#C2185B',
-          800: '#AD1457',
-          900: '#880E4F',
-        },
-        secondary: {
-          DEFAULT: '#F06292',
-          50: '#F3F0FA',
-          100: '#EDE7F6',
-          200: '#F8BBD0',
-          300: '#F8BBD0',
-          400: '#F06292',
-          500: '#F06292',
-          600: '#E91E63',
-          700: '#C2185B',
-          800: '#AD1457',
-          900: '#880E4F',
+        // Fondos
+        bg: {
+          white: '#FFFFFF',
+          'warm-white': '#FEFEFE',
+          'lavanda-atmosferico': 'rgba(186, 176, 237, 0.06)',
         },
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-amblas)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
+        amblas: ['var(--font-amblas)', 'var(--font-inter)', 'sans-serif'],
       },
     },
   },

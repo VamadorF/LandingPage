@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
@@ -9,13 +11,28 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12">
+    <footer className="border-t relative overflow-hidden" style={{ 
+      background: 'radial-gradient(ellipse at top center, rgba(186, 176, 237, 0.08) 0%, rgba(255, 255, 255, 0) 60%), #FEFEFE',
+      borderTopColor: 'rgba(186, 176, 237, 0.2)'
+    }}>
+      {/* Elemento decorativo sutil */}
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-32 rounded-full mix-blend-multiply filter blur-3xl opacity-15" style={{ backgroundColor: 'rgba(186, 176, 237, 0.10)' }}></div>
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-10 lg:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {/* Brand */}
           <div className="col-span-1 sm:col-span-2 md:col-span-2">
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">eJoi</h3>
-            <p className="text-sm sm:text-base text-gray-400 mb-4 sm:mb-5 max-w-md">
+            <div className="mb-3 sm:mb-4">
+              <div className="relative h-8 sm:h-10 w-auto inline-block">
+                <Image
+                  src="/logos/eJoi_logos-01.png"
+                  alt="eJoi"
+                  width={120}
+                  height={40}
+                  className="h-full w-auto object-contain"
+                />
+              </div>
+            </div>
+            <p className="text-sm sm:text-base mb-4 sm:mb-5 max-w-md" style={{ color: 'rgba(60, 60, 59, 0.7)' }}>
               Tu compañera virtual con memoria. Una relación continua diseñada para crear 
               hábito y apego mediante continuidad emocional.
             </p>
@@ -23,7 +40,19 @@ export default function Footer() {
               {/* Placeholder para redes sociales */}
               <a
                 href="#"
-                className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#E91E63] transition-colors duration-200"
+                className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-colors duration-200"
+                style={{ 
+                  backgroundColor: 'rgba(186, 176, 237, 0.1)',
+                  color: '#3C3C3B'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(242, 10, 100, 0.12)'
+                  e.currentTarget.style.color = '#F20A64'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(186, 176, 237, 0.1)'
+                  e.currentTarget.style.color = '#3C3C3B'
+                }}
                 aria-label="Facebook"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -32,7 +61,19 @@ export default function Footer() {
               </a>
               <a
                 href="#"
-                className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#E91E63] transition-colors duration-200"
+                className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-colors duration-200"
+                style={{ 
+                  backgroundColor: 'rgba(186, 176, 237, 0.1)',
+                  color: '#3C3C3B'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(242, 10, 100, 0.12)'
+                  e.currentTarget.style.color = '#F20A64'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(186, 176, 237, 0.1)'
+                  e.currentTarget.style.color = '#3C3C3B'
+                }}
                 aria-label="Twitter"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -41,7 +82,19 @@ export default function Footer() {
               </a>
               <a
                 href="#"
-                className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#E91E63] transition-colors duration-200"
+                className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-colors duration-200"
+                style={{ 
+                  backgroundColor: 'rgba(186, 176, 237, 0.1)',
+                  color: '#3C3C3B'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(242, 10, 100, 0.12)'
+                  e.currentTarget.style.color = '#F20A64'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(186, 176, 237, 0.1)'
+                  e.currentTarget.style.color = '#3C3C3B'
+                }}
                 aria-label="Instagram"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -53,12 +106,19 @@ export default function Footer() {
 
           {/* Links rápidos */}
           <div>
-            <h4 className="text-white font-semibold mb-3 sm:mb-4 text-base sm:text-lg">Enlaces</h4>
+            <h4 className="font-semibold mb-3 sm:mb-4 text-base sm:text-lg text-ejoi-gris">Enlaces</h4>
             <ul className="space-y-2 sm:space-y-3">
               <li>
                 <button
                   onClick={() => scrollToSection('caracteristicas')}
-                  className="min-h-[44px] text-sm sm:text-base hover:text-white transition-colors duration-200 text-left py-2"
+                  className="min-h-[44px] text-sm sm:text-base transition-colors duration-200 text-left py-2"
+                  style={{ color: 'rgba(60, 60, 59, 0.7)' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = '#F20A64'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = 'rgba(60, 60, 59, 0.7)'
+                  }}
                 >
                   Características
                 </button>
@@ -66,7 +126,14 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection('arquetipos')}
-                  className="min-h-[44px] text-sm sm:text-base hover:text-white transition-colors duration-200 text-left py-2"
+                  className="min-h-[44px] text-sm sm:text-base transition-colors duration-200 text-left py-2"
+                  style={{ color: 'rgba(60, 60, 59, 0.7)' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = '#F20A64'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = 'rgba(60, 60, 59, 0.7)'
+                  }}
                 >
                   Arquetipos
                 </button>
@@ -74,7 +141,14 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection('preregister')}
-                  className="min-h-[44px] text-sm sm:text-base hover:text-white transition-colors duration-200 text-left py-2"
+                  className="min-h-[44px] text-sm sm:text-base transition-colors duration-200 text-left py-2"
+                  style={{ color: 'rgba(60, 60, 59, 0.7)' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = '#F20A64'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = 'rgba(60, 60, 59, 0.7)'
+                  }}
                 >
                   Preregistro
                 </button>
@@ -84,20 +158,41 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h4 className="text-white font-semibold mb-3 sm:mb-4 text-base sm:text-lg">Legal</h4>
+            <h4 className="font-semibold mb-3 sm:mb-4 text-base sm:text-lg text-ejoi-gris">Legal</h4>
             <ul className="space-y-2 sm:space-y-3">
               <li>
-                <a href="#terminos" className="min-h-[44px] block text-sm sm:text-base hover:text-white transition-colors duration-200 py-2">
+                <a href="#terminos" className="min-h-[44px] block text-sm sm:text-base transition-colors duration-200 py-2" style={{ color: 'rgba(60, 60, 59, 0.7)' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = '#F20A64'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = 'rgba(60, 60, 59, 0.7)'
+                  }}
+                >
                   Términos y condiciones
                 </a>
               </li>
               <li>
-                <a href="#privacidad" className="min-h-[44px] block text-sm sm:text-base hover:text-white transition-colors duration-200 py-2">
+                <a href="#privacidad" className="min-h-[44px] block text-sm sm:text-base transition-colors duration-200 py-2" style={{ color: 'rgba(60, 60, 59, 0.7)' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = '#F20A64'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = 'rgba(60, 60, 59, 0.7)'
+                  }}
+                >
                   Política de privacidad
                 </a>
               </li>
               <li>
-                <a href="#contacto" className="min-h-[44px] block text-sm sm:text-base hover:text-white transition-colors duration-200 py-2">
+                <a href="#contacto" className="min-h-[44px] block text-sm sm:text-base transition-colors duration-200 py-2" style={{ color: 'rgba(60, 60, 59, 0.7)' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = '#F20A64'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = 'rgba(60, 60, 59, 0.7)'
+                  }}
+                >
                   Contacto
                 </a>
               </li>
@@ -105,7 +200,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-xs sm:text-sm text-gray-400">
+        <div className="border-t mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-xs sm:text-sm" style={{ 
+          borderTopColor: 'rgba(186, 176, 237, 0.2)',
+          color: 'rgba(60, 60, 59, 0.6)'
+        }}>
           <p>&copy; {currentYear} eJoi. Todos los derechos reservados.</p>
           <p className="mt-2">Diseñado y desarrollado con ❤️ en Chile</p>
         </div>
