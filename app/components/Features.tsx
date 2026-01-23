@@ -47,32 +47,50 @@ export default function Features() {
   ]
 
   return (
-    <section id="caracteristicas" className="py-12 sm:py-16 md:py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10 sm:mb-12 md:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#424242] mb-3 sm:mb-4">
+    <section id="caracteristicas" className="py-8 sm:py-12 md:py-16 lg:py-20 relative overflow-hidden" style={{ 
+      background: 'radial-gradient(ellipse at top right, rgba(186, 176, 237, 0.10) 0%, rgba(186, 176, 237, 0.05) 40%, rgba(255, 255, 255, 0) 70%), #FEFEFE'
+    }}>
+      {/* Elementos decorativos sutiles */}
+      <div className="absolute top-0 right-0 w-96 h-96 rounded-full mix-blend-multiply filter blur-3xl opacity-20" style={{ backgroundColor: 'rgba(186, 176, 237, 0.12)' }}></div>
+      <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full mix-blend-multiply filter blur-3xl opacity-15" style={{ backgroundColor: 'rgba(242, 10, 100, 0.06)' }}></div>
+      
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-6 sm:mb-8 md:mb-12 lg:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-ejoi-gris mb-2 sm:mb-3 md:mb-4">
             Características principales
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-[#9E9E9E] max-w-2xl mx-auto px-2">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto px-2" style={{ color: 'rgba(60, 60, 59, 0.7)' }}>
             Una experiencia diseñada para crear hábito y apego mediante continuidad emocional
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-gradient-to-br from-white to-[#F5F5F5] p-6 sm:p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-[#F3F0FA]"
+              className="bg-white p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2 border group"
+              style={{ 
+                borderColor: 'rgba(186, 176, 237, 0.2)',
+                boxShadow: '0 2px 8px rgba(186, 176, 237, 0.08)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(242, 10, 100, 0.3)'
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(186, 176, 237, 0.15), 0 4px 12px rgba(242, 10, 100, 0.1)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(186, 176, 237, 0.2)'
+                e.currentTarget.style.boxShadow = '0 2px 8px rgba(186, 176, 237, 0.08)'
+              }}
             >
-              <div className="text-[#E91E63] mb-3 sm:mb-4">
-                <svg className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="mb-2 sm:mb-3 md:mb-4 transition-transform duration-300 group-hover:scale-110" style={{ color: '#F20A64' }}>
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   {feature.icon}
                 </svg>
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-[#424242] mb-2 sm:mb-3">
+              <h3 className="text-base sm:text-lg md:text-xl font-semibold text-ejoi-gris mb-1.5 sm:mb-2 md:mb-3">
                 {feature.title}
               </h3>
-              <p className="text-sm sm:text-base text-[#9E9E9E] leading-relaxed">
+              <p className="text-xs sm:text-sm md:text-base leading-relaxed" style={{ color: 'rgba(60, 60, 59, 0.7)' }}>
                 {feature.description}
               </p>
             </div>
