@@ -13,11 +13,11 @@ const siteName = 'eJoi'
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: {
-    default: 'eJoi - Tu compañera virtual con memoria',
+    default: 'eJoi - Tu compañer@ virtual con memoria',
     template: '%s | eJoi',
   },
   description:
-    'Plataforma de acompañamiento personal con IA. Una relación continua con un avatar virtual que recuerda tus gustos, logros y contexto para que el vínculo evolucione.',
+    'Plataforma de acompañamiento personal con IA. Una relación continua con un compañer@ virtual que recuerda tus gustos, logros y contexto para que el vínculo evolucione.',
   applicationName: siteName,
   keywords: ['IA', 'compañera virtual', 'compañero virtual', 'chatbot', 'memoria persistente', 'avatar', 'Chile', 'compañia', 'asistente virtual'],
   authors: [{ name: siteName }],
