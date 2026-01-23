@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'tablet': '768px',
+        'tablet-lg': '1024px',
+      },
       colors: {
         // Paleta oficial eJoi
         ejoi: {
