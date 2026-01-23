@@ -201,15 +201,6 @@ export default function PreregisterForm() {
                   </p>
                 </div>
               </div>
-
-              <div className="text-center">
-                <button
-                  onClick={() => setSubmitStatus('idle')}
-                  className="px-6 py-2 text-[#E91E63] font-semibold hover:text-[#F06292] transition-colors"
-                >
-                  Enviar otro preregistro
-                </button>
-              </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
