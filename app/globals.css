@@ -4,8 +4,43 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
+/* Fuente Amblas */
+@font-face {
+  font-family: 'Amblas';
+  src: url('/fonts/Amblas.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
+  --font-amblas: 'Amblas', 'Inter', sans-serif;
   --font-inter: 'Inter', sans-serif;
+  
+  /* Paleta oficial eJoi - Colores base */
+  --ejoi-magenta: #F20A64;
+  --ejoi-lavanda: #BAB0ED;
+  --ejoi-gris: #3C3C3B;
+  
+  /* Magenta - Versiones suavizadas (solo para fondos, badges, halos) */
+  --ejoi-magenta-soft: rgba(242, 10, 100, 0.12);      /* 12% opacity */
+  --ejoi-magenta-ultra-soft: rgba(242, 10, 100, 0.08); /* 8% opacity */
+  --ejoi-magenta-medium: rgba(242, 10, 100, 0.20);     /* 20% opacity */
+  
+  /* Lavanda - Versiones atmosféricas (fondos principales) */
+  --ejoi-lavanda-light: rgba(186, 176, 237, 0.15);     /* 15% opacity - fondos amplios */
+  --ejoi-lavanda-ultra-light: rgba(186, 176, 237, 0.08); /* 8% opacity - fondos muy suaves */
+  --ejoi-lavanda-medium: rgba(186, 176, 237, 0.25);   /* 25% opacity - overlays */
+  
+  /* Gris neutro - Solo para texto y elementos funcionales */
+  --ejoi-gris-text: #3C3C3B;
+  --ejoi-gris-text-light: rgba(60, 60, 59, 0.7);       /* 70% opacity - texto secundario */
+  --ejoi-gris-text-lighter: rgba(60, 60, 59, 0.5);     /* 50% opacity - texto terciario */
+  
+  /* Fondos base */
+  --ejoi-bg-white: #FFFFFF;
+  --ejoi-bg-warm-white: #FEFEFE;
+  --ejoi-bg-lavanda-atmosferico: rgba(186, 176, 237, 0.06); /* Fondo atmosférico muy suave */
 }
 
 * {
@@ -22,8 +57,8 @@ body {
 }
 
 body {
-  color: #424242;
-  background: #ffffff;
+  color: var(--ejoi-gris-text);
+  background: var(--ejoi-bg-white);
 }
 
 a {
@@ -72,28 +107,29 @@ button, a {
   transition: all 0.2s ease-in-out;
 }
 
-/* Focus styles for accessibility */
+/* Focus styles for accessibility - Magenta suavizado */
 *:focus-visible {
-  outline: 2px solid #E91E63;
+  outline: 2px solid var(--ejoi-magenta);
   outline-offset: 2px;
+  outline-opacity: 0.6;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Lavanda suave */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F3F0FA;
+  background: var(--ejoi-lavanda-ultra-light);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #EDE7F6;
+  background: var(--ejoi-lavanda-light);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #F8BBD0;
+  background: var(--ejoi-lavanda-medium);
 }
 
 /* Blob animation for Hero section */
@@ -109,12 +145,46 @@ button, a {
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
 .animate-blob {
-  animation: blob 7s infinite;
+  animation: blob 7s infinite ease-in-out;
+}
+
+.animate-float {
+  animation: float 6s infinite ease-in-out;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 4s infinite ease-in-out;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1s;
 }
 
 .animation-delay-2000 {
   animation-delay: 2s;
+}
+
+.animation-delay-3000 {
+  animation-delay: 3s;
 }
 
 .animation-delay-4000 {
