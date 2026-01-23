@@ -95,18 +95,19 @@ export default function Archetypes() {
   const [selectedStyle, setSelectedStyle] = useState<'realista' | 'anime'>('realista')
   const [selectedGender, setSelectedGender] = useState<'masculino' | 'femenino'>('femenino')
   const [hoveredArchetype, setHoveredArchetype] = useState<string | null>(null)
-  const [isMobile, setIsMobile] = useState(false)
+  const [isTablet, setIsTablet] = useState(false)
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set())
   const [imageErrors, setImageErrors] = useState<Set<string>>(new Set())
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 640) // sm breakpoint
+    const updateViewport = () => {
+      const width = window.innerWidth
+      setIsTablet(width >= 768 && width <= 1024) // iPad sizes (md to lg)
     }
     
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
+    updateViewport()
+    window.addEventListener('resize', updateViewport)
+    return () => window.removeEventListener('resize', updateViewport)
   }, [])
 
   // Reset loaded images when style or gender changes
@@ -116,6 +117,27 @@ export default function Archetypes() {
   }, [selectedStyle, selectedGender])
 
   const archetypes = selectedGender === 'masculino' ? archetypesMasculinos : archetypesFemeninos
+
+  const adjustObjectPositionForTablet = (position: string) => {
+    const parts = position.split(' ')
+    if (parts.length < 2) {
+      return position
+    }
+    const [x, y] = parts
+    const match = y.match(/^(\d+(?:\.\d+)?)%$/)
+    if (!match) {
+      return position
+    }
+    const yValue = Math.max(0, parseFloat(match[1]) - 10)
+    return `${x} ${yValue}%`
+  }
+
+  const getObjectPosition = (archetype: Archetype) => {
+    const basePosition = selectedStyle === 'anime'
+      ? (archetype.objectPositionAnime || 'center center')
+      : (archetype.objectPositionRealista || 'center center')
+    return isTablet ? adjustObjectPositionForTablet(basePosition) : basePosition
+  }
 
   return (
     <section id="arquetipos" className="py-8 sm:py-12 md:py-16 lg:py-20 relative overflow-hidden" style={{
@@ -228,7 +250,7 @@ export default function Archetypes() {
                 e.currentTarget.style.boxShadow = '0 2px 8px rgba(186, 176, 237, 0.08)'
               }}
             >
-              <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 overflow-hidden flex-shrink-0" style={{ backgroundColor: 'rgba(186, 176, 237, 0.05)' }}>
+              <div className="relative h-48 sm:h-56 md:h-72 lg:h-72 xl:h-80 overflow-hidden flex-shrink-0" style={{ backgroundColor: 'rgba(186, 176, 237, 0.05)' }}>
                 {/* Loading skeleton */}
                 {!loadedImages.has(`${archetype.id}-${selectedStyle}`) && !imageErrors.has(`${archetype.id}-${selectedStyle}`) && (
                   <div className="absolute inset-0 animate-pulse flex items-center justify-center" style={{ 
@@ -260,15 +282,9 @@ export default function Archetypes() {
                       hoveredArchetype === archetype.id ? 'scale-110' : 'scale-100'
                     } ${loadedImages.has(`${archetype.id}-${selectedStyle}`) ? 'opacity-100' : 'opacity-0'}`}
                     style={{
-                      objectPosition: isMobile 
-                        ? (selectedStyle === 'anime' 
-                            ? (archetype.objectPositionAnime || 'center center') 
-                            : (archetype.objectPositionRealista || 'center center'))
-                        : (selectedStyle === 'anime' 
-                            ? (archetype.objectPositionAnime || 'center center') 
-                            : (archetype.objectPositionRealista || 'center center')),
+                      objectPosition: getObjectPosition(archetype),
                     }}
-                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1023px) 50vw, 25vw"
                     onLoad={() => {
                       setLoadedImages(prev => new Set(prev).add(`${archetype.id}-${selectedStyle}`))
                     }}
