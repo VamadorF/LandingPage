@@ -124,3 +124,5 @@ Si el problema persiste después de verificar todo lo anterior, revisa:
 3. La consola del navegador (F12) para errores del frontend
 
 
+
+

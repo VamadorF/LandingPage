@@ -20,7 +20,15 @@ Esta guía te ayudará a configurar Supabase para el sistema de preregistro de e
 ```env
 SUPABASE_URL=tu_url_del_proyecto
 SUPABASE_ANON_KEY=tu_anon_key
+
+# Configuración de Resend para envío de emails
+RESEND_API_KEY=re_Rwmv956G_KjvYT4Vz5MnQGC1b79qRZnUY
+RESEND_FROM_EMAIL=eJoi <noreply@tudominio.com>
 ```
+
+**Nota sobre RESEND_FROM_EMAIL**: 
+- Debe ser un email válido del formato `"Nombre <email@dominio.com>"` o simplemente `email@dominio.com`
+- Para producción, asegúrate de verificar tu dominio en [Resend](https://resend.com/domains)
 
 ## Paso 2: Crear Extensiones
 

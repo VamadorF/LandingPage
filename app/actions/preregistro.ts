@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import { supabaseServer } from "@/lib/supabase-server";
+import { sendPreregistroConfirmationEmail } from "@/lib/email";
 
 const preregistroSchema = z.object({
   nombre: z.string().min(1, "Nombre requerido").trim(),
@@ -53,6 +54,15 @@ export async function submitPreregistro(input: unknown) {
 
       return { ok: false, code: "DB", message: "Error al guardar el registro. Por favor, intenta nuevamente." };
     }
+
+    // Enviar correo de confirmación (no bloquea la respuesta si falla)
+    sendPreregistroConfirmationEmail({
+      nombre: payload.nombre,
+      email: payload.email,
+    }).catch((emailError) => {
+      // Log del error pero no afecta el resultado del registro
+      console.error("[submitPreregistro] Error al enviar email de confirmación:", emailError);
+    });
 
     return { ok: true };
   } catch (err) {
