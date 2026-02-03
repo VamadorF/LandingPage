@@ -2,6 +2,7 @@
 
 import { useState, FormEvent, startTransition, useEffect } from 'react'
 import { submitPreregistro } from '@/app/actions/preregistro'
+import { openLegalModal } from './legalHub'
 
 interface FormData {
   nombre: string
@@ -504,13 +505,13 @@ export default function PreregisterForm() {
                   />
                   <span className="text-sm sm:text-base text-ejoi-gris leading-relaxed">
                     Acepto los{' '}
-                    <a href="#terminos" className="hover:underline" style={{ color: '#F20A64' }}>
+                    <button type="button" onClick={() => openLegalModal('terms')} className="hover:underline" style={{ color: '#F20A64' }}>
                       términos y condiciones
-                    </a>{' '}
+                    </button>{' '}
                     y la{' '}
-                    <a href="#privacidad" className="hover:underline" style={{ color: '#F20A64' }}>
+                    <button type="button" onClick={() => openLegalModal('privacy')} className="hover:underline" style={{ color: '#F20A64' }}>
                       política de privacidad
-                    </a>{' '}
+                    </button>{' '}
                     <span className="text-red-500">*</span>
                   </span>
                 </label>
@@ -556,4 +557,3 @@ export default function PreregisterForm() {
     </section>
   )
 }
-
