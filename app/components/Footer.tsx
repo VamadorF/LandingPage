@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { openLegalModal } from './legalHub'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -161,7 +162,7 @@ export default function Footer() {
             <h4 className="font-semibold mb-3 sm:mb-4 text-base sm:text-lg text-ejoi-gris">Legal</h4>
             <ul className="space-y-2 sm:space-y-3">
               <li>
-                <a href="#terminos" className="min-h-[44px] block text-sm sm:text-base transition-colors duration-200 py-2" style={{ color: 'rgba(60, 60, 59, 0.7)' }}
+                <button type="button" onClick={() => openLegalModal('terms')} className="min-h-[44px] block text-sm sm:text-base transition-colors duration-200 py-2 text-left w-full" style={{ color: 'rgba(60, 60, 59, 0.7)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = '#F20A64'
                   }}
@@ -170,10 +171,10 @@ export default function Footer() {
                   }}
                 >
                   Términos y condiciones
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#privacidad" className="min-h-[44px] block text-sm sm:text-base transition-colors duration-200 py-2" style={{ color: 'rgba(60, 60, 59, 0.7)' }}
+                <button type="button" onClick={() => openLegalModal('privacy')} className="min-h-[44px] block text-sm sm:text-base transition-colors duration-200 py-2 text-left w-full" style={{ color: 'rgba(60, 60, 59, 0.7)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = '#F20A64'
                   }}
@@ -182,7 +183,7 @@ export default function Footer() {
                   }}
                 >
                   Política de privacidad
-                </a>
+                </button>
               </li>
               <li>
                 <a href="#contacto" className="min-h-[44px] block text-sm sm:text-base transition-colors duration-200 py-2" style={{ color: 'rgba(60, 60, 59, 0.7)' }}
@@ -211,4 +212,3 @@ export default function Footer() {
     </footer>
   )
 }
-

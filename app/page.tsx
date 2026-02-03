@@ -5,6 +5,9 @@ import Archetypes from './components/Archetypes'
 import PreregisterForm from './components/PreregisterForm'
 import Footer from './components/Footer'
 
+
+
+
 export default function Home() {
   return (
     <main className="min-h-screen">
@@ -17,4 +20,3 @@ export default function Home() {
     </main>
   )
 }
-

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { LegalHub } from './components/legalHub'
+import CookiePopup from './components/Cookiepopup'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -68,7 +70,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={inter.variable}>
-      <body className="font-amblas antialiased" style={{ fontFamily: 'var(--font-amblas)' }}>
+      <body className="antialiased">
+        <LegalHub />
+        <CookiePopup />
         {children}
       </body>
     </html>
