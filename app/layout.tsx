@@ -58,6 +58,8 @@ export const metadata: Metadata = {
 
   twitter: {
     card: 'summary_large_image',
+    site: '@eJoiOfficial',
+    creator: '@eJoiOfficial',
     title: 'eJoi - Tu compañer@ virtual con memoria',
     description:
       'Plataforma de acompañamiento personal con IA. Una relación continua con un compañer@ virtual que recuerda.',
