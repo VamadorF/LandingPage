@@ -95,7 +95,7 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection('caracteristicas')}
-                  className="min-h-[44px] text-sm sm:text-base transition-colors duration-200 text-left py-2"
+                  className="min-h-[44px] flex items-center text-sm sm:text-base transition-colors duration-200 text-left"
                   style={{ color: 'rgba(60, 60, 59, 0.7)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = '#F20A64'
@@ -110,7 +110,7 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection('arquetipos')}
-                  className="min-h-[44px] text-sm sm:text-base transition-colors duration-200 text-left py-2"
+                  className="min-h-[44px] flex items-center text-sm sm:text-base transition-colors duration-200 text-left"
                   style={{ color: 'rgba(60, 60, 59, 0.7)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = '#F20A64'
@@ -125,7 +125,7 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection('preregister')}
-                  className="min-h-[44px] text-sm sm:text-base transition-colors duration-200 text-left py-2"
+                  className="min-h-[44px] flex items-center text-sm sm:text-base transition-colors duration-200 text-left"
                   style={{ color: 'rgba(60, 60, 59, 0.7)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = '#F20A64'

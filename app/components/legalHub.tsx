@@ -53,22 +53,6 @@ export function LegalHub() {
       >
         <CookiesContent />
       </LegalModal>
-
-      <LegalModal
-        title="Política de Cookies"
-        open={open === 'cookies'}
-        onClose={() => setOpen(null)}
-      >
-        <CookiesContent />
-      </LegalModal>
-
-      <LegalModal
-        title="Política de Cookies"
-        open={open === 'cookies'}
-        onClose={() => setOpen(null)}
-      >
-        <CookiesContent />
-      </LegalModal>
     </>
   )
 }
