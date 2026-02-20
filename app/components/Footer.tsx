@@ -1,14 +1,10 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
-
-  const scrollToSection = (id: string) => {
-    const section = document.getElementById(id)
-    section?.scrollIntoView({ behavior: 'smooth' })
-  }
 
   return (
     <footer className="border-t relative overflow-hidden" style={{
@@ -92,9 +88,9 @@ export default function Footer() {
             <h4 className="font-semibold mb-3 sm:mb-4 text-base sm:text-lg text-ejoi-gris">Enlaces</h4>
             <ul className="space-y-2 sm:space-y-3">
               <li>
-                <button
-                  onClick={() => scrollToSection('caracteristicas')}
-                  className="min-h-[44px] text-sm sm:text-base transition-colors duration-200 text-left py-2"
+                <Link
+                  href="/#caracteristicas"
+                  className="min-h-[44px] flex items-center text-sm sm:text-base transition-colors duration-200"
                   style={{ color: 'rgba(60, 60, 59, 0.7)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = '#F20A64'
@@ -104,12 +100,12 @@ export default function Footer() {
                   }}
                 >
                   Características
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection('arquetipos')}
-                  className="min-h-[44px] text-sm sm:text-base transition-colors duration-200 text-left py-2"
+                <Link
+                  href="/#arquetipos"
+                  className="min-h-[44px] flex items-center text-sm sm:text-base transition-colors duration-200"
                   style={{ color: 'rgba(60, 60, 59, 0.7)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = '#F20A64'
@@ -119,12 +115,12 @@ export default function Footer() {
                   }}
                 >
                   Arquetipos
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection('preregister')}
-                  className="min-h-[44px] text-sm sm:text-base transition-colors duration-200 text-left py-2"
+                <Link
+                  href="/#preregister"
+                  className="min-h-[44px] flex items-center text-sm sm:text-base transition-colors duration-200"
                   style={{ color: 'rgba(60, 60, 59, 0.7)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = '#F20A64'
@@ -134,7 +130,7 @@ export default function Footer() {
                   }}
                 >
                   Preregistro
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
@@ -144,7 +140,7 @@ export default function Footer() {
             <h4 className="font-semibold mb-3 sm:mb-4 text-base sm:text-lg text-ejoi-gris">Legal</h4>
             <ul className="space-y-2 sm:space-y-3">
               <li>
-                <a href="#terminos" className="min-h-[44px] block text-sm sm:text-base transition-colors duration-200 py-2" style={{ color: 'rgba(60, 60, 59, 0.7)' }}
+                <Link href="/terminos" className="min-h-[44px] flex items-center text-sm sm:text-base transition-colors duration-200" style={{ color: 'rgba(60, 60, 59, 0.7)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = '#F20A64'
                   }}
@@ -153,10 +149,10 @@ export default function Footer() {
                   }}
                 >
                   Términos y condiciones
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#privacidad" className="min-h-[44px] block text-sm sm:text-base transition-colors duration-200 py-2" style={{ color: 'rgba(60, 60, 59, 0.7)' }}
+                <Link href="/privacidad" className="min-h-[44px] flex items-center text-sm sm:text-base transition-colors duration-200" style={{ color: 'rgba(60, 60, 59, 0.7)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = '#F20A64'
                   }}
@@ -165,10 +161,22 @@ export default function Footer() {
                   }}
                 >
                   Política de privacidad
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#contacto" className="min-h-[44px] block text-sm sm:text-base transition-colors duration-200 py-2" style={{ color: 'rgba(60, 60, 59, 0.7)' }}
+                <Link href="/cookies" className="min-h-[44px] flex items-center text-sm sm:text-base transition-colors duration-200" style={{ color: 'rgba(60, 60, 59, 0.7)' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = '#F20A64'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = 'rgba(60, 60, 59, 0.7)'
+                  }}
+                >
+                  Política de cookies
+                </Link>
+              </li>
+              <li>
+                <Link href="/contacto" className="min-h-[44px] flex items-center text-sm sm:text-base transition-colors duration-200" style={{ color: 'rgba(60, 60, 59, 0.7)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = '#F20A64'
                   }}
@@ -177,7 +185,7 @@ export default function Footer() {
                   }}
                 >
                   Contacto
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

@@ -51,65 +51,69 @@ export default function Hero() {
             con memoria
           </span>
         </h1>
-        
+
         <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-ejoi-gris mb-4 sm:mb-6 md:mb-8 max-w-2xl mx-auto leading-relaxed px-2" style={{ color: 'rgba(60, 60, 59, 0.85)' }}>
-          Una relación continua, no un chatbot. Tu compañera recuerda tus gustos, 
-          hitos y contexto para que el vínculo evolucione y no se reinicie en cada conversación.
+          Una relacion continua, tu compañera recuerda quien eres. El vínculo crece contigo, conversacion a conversacion.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 md:gap-4 justify-center items-center mb-4 sm:mb-6 md:mb-8">
+        <div className="flex justify-center items-center mb-4 sm:mb-6 md:mb-8">
           <button
             onClick={scrollToForm}
             className="w-full sm:w-auto min-h-[44px] px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-white font-semibold rounded-full shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-300 text-sm sm:text-base md:text-lg"
-            style={{ 
+            style={{
               backgroundColor: '#F20A64',
               boxShadow: '0 4px 14px rgba(242, 10, 100, 0.25)'
             }}
           >
             Preregístrate ahora
           </button>
-          <a
-            href="#caracteristicas"
-            className="w-full sm:w-auto min-h-[44px] px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-white text-ejoi-gris font-semibold rounded-full shadow-sm hover:shadow-md transform hover:scale-[1.02] transition-all duration-300 text-sm sm:text-base md:text-lg border"
-            style={{ 
-              borderColor: 'rgba(186, 176, 237, 0.2)',
-              color: '#3C3C3B'
-            }}
-          >
-            Conoce más
-          </a>
         </div>
 
-        {/* App Store Buttons */}
+        {/* App Store Buttons — Próximamente */}
         <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 md:gap-4 justify-center items-center mb-4 sm:mb-6 md:mb-8">
-          <a
-            href="https://apple.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto min-h-[44px] flex items-center justify-center gap-2 sm:gap-3 bg-black text-white px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group"
+          {/* App Store — deshabilitado */}
+          <div
+            aria-disabled="true"
+            role="img"
+            aria-label="App Store — Próximamente"
+            className="w-full sm:w-auto min-h-[44px] flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-xl select-none"
+            style={{
+              background: 'linear-gradient(135deg, rgba(242, 10, 100, 0.08) 0%, rgba(186, 176, 237, 0.12) 100%)',
+              border: '1.5px solid rgba(242, 10, 100, 0.20)',
+              opacity: 0.7,
+              cursor: 'not-allowed',
+            }}
           >
-            <div className="relative w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 flex-shrink-0 bg-transparent">
+            <div className="relative w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 flex-shrink-0 bg-transparent" style={{ opacity: 0.5 }}>
               <Image
                 src="/logos/Apple_logo.png"
                 alt="Apple"
                 width={40}
                 height={40}
                 className="object-contain"
-                style={{ filter: 'brightness(0) invert(1)' }}
+                style={{ filter: 'brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(5000%) hue-rotate(318deg) brightness(90%)' }}
               />
             </div>
             <div className="flex flex-col items-start">
-              <span className="text-[9px] sm:text-[10px] md:text-xs text-gray-400">Descarga en</span>
-              <span className="text-[11px] sm:text-xs md:text-sm font-semibold">App Store</span>
+              <span className="text-[9px] sm:text-[10px] md:text-xs font-medium" style={{ color: 'rgba(242, 10, 100, 0.6)' }}>Próximamente</span>
+              <span className="text-[11px] sm:text-xs md:text-sm font-semibold" style={{ color: '#3C3C3B' }}>App Store</span>
             </div>
-          </a>
-          <a
-            href="https://android.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto min-h-[44px] flex items-center justify-center gap-2 sm:gap-3 bg-black text-white px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group"
+          </div>
+
+          {/* Google Play — deshabilitado */}
+          <div
+            aria-disabled="true"
+            role="img"
+            aria-label="Google Play — Próximamente"
+            className="w-full sm:w-auto min-h-[44px] flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-xl select-none"
+            style={{
+              background: 'linear-gradient(135deg, rgba(242, 10, 100, 0.08) 0%, rgba(186, 176, 237, 0.12) 100%)',
+              border: '1.5px solid rgba(242, 10, 100, 0.20)',
+              opacity: 0.7,
+              cursor: 'not-allowed',
+            }}
           >
-            <div className="relative w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 flex-shrink-0">
+            <div className="relative w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 flex-shrink-0" style={{ opacity: 0.5 }}>
               <Image
                 src="/logos/Android_logo.png"
                 alt="Android"
@@ -119,10 +123,10 @@ export default function Hero() {
               />
             </div>
             <div className="flex flex-col items-start">
-              <span className="text-[9px] sm:text-[10px] md:text-xs text-gray-400">Disponible en</span>
-              <span className="text-[11px] sm:text-xs md:text-sm font-semibold">Google Play</span>
+              <span className="text-[9px] sm:text-[10px] md:text-xs font-medium" style={{ color: 'rgba(242, 10, 100, 0.6)' }}>Próximamente</span>
+              <span className="text-[11px] sm:text-xs md:text-sm font-semibold" style={{ color: '#3C3C3B' }}>Google Play</span>
             </div>
-          </a>
+          </div>
         </div>
 
         <div className="mt-6 sm:mt-8 md:mt-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 text-[11px] sm:text-xs md:text-sm" style={{ color: 'rgba(60, 60, 59, 0.6)' }}>
