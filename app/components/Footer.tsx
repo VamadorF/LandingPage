@@ -90,7 +90,7 @@ export default function Footer() {
 
           {/* Links rápidos */}
           <div>
-            <h4 className="font-semibold mb-3 sm:mb-4 text-base sm:text-lg text-ejoi-gris">Enlaces</h4>
+            <p className="font-semibold mb-3 sm:mb-4 text-base sm:text-lg text-ejoi-gris">Enlaces</p>
             <ul className="space-y-2 sm:space-y-3">
               <li>
                 <button
@@ -142,7 +142,7 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h4 className="font-semibold mb-3 sm:mb-4 text-base sm:text-lg text-ejoi-gris">Legal</h4>
+            <p className="font-semibold mb-3 sm:mb-4 text-base sm:text-lg text-ejoi-gris">Legal</p>
             <ul className="space-y-2 sm:space-y-3">
               <li>
                 <Link href="/terminos" className="min-h-[44px] block text-sm sm:text-base transition-colors duration-200 py-2" style={{ color: 'rgba(60, 60, 59, 0.7)' }}

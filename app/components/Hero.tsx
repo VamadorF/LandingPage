@@ -46,14 +46,15 @@ export default function Hero() {
         </div>
 
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-bold text-ejoi-gris mb-3 sm:mb-4 md:mb-6 leading-tight px-2">
-          Tu compañera virtual
+          Tu compañera virtual con IA
           <span className="block" style={{ color: '#F20A64' }}>
-            con memoria
+            que te recuerda
           </span>
         </h1>
 
         <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-ejoi-gris mb-4 sm:mb-6 md:mb-8 max-w-2xl mx-auto leading-relaxed px-2" style={{ color: 'rgba(60, 60, 59, 0.85)' }}>
-          Una relacion continua, tu compañera recuerda quien eres. El vínculo crece contigo, conversacion a conversacion.
+          Más que un chatbot: una compañera virtual con memoria persistente que recuerda 
+          tus gustos, hitos y contexto. El vínculo crece contigo, conversación a conversación.
         </p>
 
         <div className="flex justify-center items-center mb-4 sm:mb-6 md:mb-8">

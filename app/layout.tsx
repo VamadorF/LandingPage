@@ -15,13 +15,25 @@ const siteName = 'eJoi'
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: {
-    default: 'eJoi - Tu compañer@ virtual con memoria',
+    default: 'eJoi – Compañera Virtual con IA y Memoria Persistente',
     template: '%s | eJoi',
   },
   description:
-    'Plataforma de acompañamiento personal con IA. Una relación continua con un compañer@ virtual que recuerda tus gustos, logros y contexto para que el vínculo evolucione.',
+    'eJoi: tu compañera virtual con IA que recuerda tus gustos y contexto. Más que un chatbot, una relación continua. Preregístrate gratis.',
   applicationName: siteName,
-  keywords: ['IA', 'compañera virtual', 'compañero virtual', 'chatbot', 'memoria persistente', 'avatar', 'Chile', 'compañia', 'asistente virtual'],
+  keywords: [
+    'eJoi',
+    'compañera virtual',
+    'compañero virtual',
+    'inteligencia artificial',
+    'IA',
+    'chatbot con memoria',
+    'memoria persistente',
+    'avatar personalizado',
+    'asistente virtual',
+    'acompañamiento emocional',
+    'Chile',
+  ],
   authors: [{ name: siteName }],
   creator: siteName,
   publisher: siteName,
@@ -39,31 +51,22 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: 'eJoi - Tu compañer@ virtual con memoria',
+    title: 'eJoi – Tu Compañera Virtual con IA que Te Recuerda',
     description:
-      'Plataforma de acompañamiento personal con IA. Una relación continua con un compañer@ virtual que recuerda tu contexto.',
+      'Más que un chatbot: eJoi es una compañera virtual con inteligencia artificial y memoria persistente. Recuerda tus gustos, hitos y contexto para que el vínculo evolucione.',
     url: '/',
     siteName,
     locale: 'es_CL',
     type: 'website',
-    images: [
-      {
-        url: '/og.jpg', 
-        width: 1200,
-        height: 630,
-        alt: 'eJoi - Tu compañer@ virtual con memoria',
-      },
-    ],
   },
 
   twitter: {
     card: 'summary_large_image',
     site: '@eJoiOfficial',
     creator: '@eJoiOfficial',
-    title: 'eJoi - Tu compañer@ virtual con memoria',
+    title: 'eJoi – Compañera Virtual con IA y Memoria Persistente',
     description:
-      'Plataforma de acompañamiento personal con IA. Una relación continua con un compañer@ virtual que recuerda.',
-    images: ['/og.jpg'],
+      'Más que un chatbot: una compañera virtual que recuerda tus gustos y contexto. Avatar personalizado, memoria persistente y relación continua.',
   },
 
   category: 'technology',
