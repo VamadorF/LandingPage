@@ -1,5 +1,3 @@
-// hice este boton desde cero pero necesito saber si vamos a usar alguna dependencia externa como cookieyes o similar para la gestion de cookies
-
 
 'use client'
 

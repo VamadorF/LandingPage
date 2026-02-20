@@ -35,7 +35,7 @@ export const TermsContent = () => (
         4.2. Las interacciones tienen fines recreativos, de acompañamiento y exploración personal.
       </p>
       <p>
-        4.3. Ante crisis emocional, salud mental, ideación suicida o emergencias, el Usuario debe acudir a un profesional calificado o a servicios de emergencia.
+        4.3. Ante casos de crisis emocional, de salud mental, ideación suicida o emergencias, el Usuario debe acudir a un profesional calificado o a servicios de emergencia.
       </p>
     </section>
 
