@@ -11,7 +11,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="border-t relative overflow-hidden" style={{ 
+    <footer className="border-t relative overflow-hidden" style={{
       background: 'radial-gradient(ellipse at top center, rgba(186, 176, 237, 0.08) 0%, rgba(255, 255, 255, 0) 60%), #FEFEFE',
       borderTopColor: 'rgba(186, 176, 237, 0.2)'
     }}>
@@ -33,7 +33,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-sm sm:text-base mb-4 sm:mb-5 max-w-md" style={{ color: 'rgba(60, 60, 59, 0.7)' }}>
-              Tu compañera virtual con memoria. Una relación continua diseñada para crear 
+              Tu compañera virtual con memoria. Una relación continua diseñada para crear
               hábito y apego mediante continuidad emocional.
             </p>
             <div className="flex gap-3 sm:gap-4">
@@ -43,7 +43,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-colors duration-200"
-                style={{ 
+                style={{
                   backgroundColor: 'rgba(186, 176, 237, 0.1)',
                   color: '#3C3C3B'
                 }}
@@ -66,7 +66,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="min-w-[44px] min-h-[44px] w-11 h-11 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-colors duration-200"
-                style={{ 
+                style={{
                   backgroundColor: 'rgba(186, 176, 237, 0.1)',
                   color: '#3C3C3B'
                 }}
@@ -183,7 +183,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-xs sm:text-sm" style={{ 
+        <div className="border-t mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-xs sm:text-sm" style={{
           borderTopColor: 'rgba(186, 176, 237, 0.2)',
           color: 'rgba(60, 60, 59, 0.6)'
         }}>
