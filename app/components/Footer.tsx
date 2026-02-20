@@ -6,6 +6,11 @@ import Link from 'next/link'
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id)
+    section?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <footer className="border-t relative overflow-hidden" style={{
       background: 'radial-gradient(ellipse at top center, rgba(186, 176, 237, 0.08) 0%, rgba(255, 255, 255, 0) 60%), #FEFEFE',
@@ -88,9 +93,9 @@ export default function Footer() {
             <h4 className="font-semibold mb-3 sm:mb-4 text-base sm:text-lg text-ejoi-gris">Enlaces</h4>
             <ul className="space-y-2 sm:space-y-3">
               <li>
-                <Link
-                  href="/#caracteristicas"
-                  className="min-h-[44px] flex items-center text-sm sm:text-base transition-colors duration-200"
+                <button
+                  onClick={() => scrollToSection('caracteristicas')}
+                  className="min-h-[44px] flex items-center text-sm sm:text-base transition-colors duration-200 text-left"
                   style={{ color: 'rgba(60, 60, 59, 0.7)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = '#F20A64'
@@ -100,12 +105,12 @@ export default function Footer() {
                   }}
                 >
                   Características
-                </Link>
+                </button>
               </li>
               <li>
-                <Link
-                  href="/#arquetipos"
-                  className="min-h-[44px] flex items-center text-sm sm:text-base transition-colors duration-200"
+                <button
+                  onClick={() => scrollToSection('arquetipos')}
+                  className="min-h-[44px] flex items-center text-sm sm:text-base transition-colors duration-200 text-left"
                   style={{ color: 'rgba(60, 60, 59, 0.7)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = '#F20A64'
@@ -115,12 +120,12 @@ export default function Footer() {
                   }}
                 >
                   Arquetipos
-                </Link>
+                </button>
               </li>
               <li>
-                <Link
-                  href="/#preregister"
-                  className="min-h-[44px] flex items-center text-sm sm:text-base transition-colors duration-200"
+                <button
+                  onClick={() => scrollToSection('preregister')}
+                  className="min-h-[44px] flex items-center text-sm sm:text-base transition-colors duration-200 text-left"
                   style={{ color: 'rgba(60, 60, 59, 0.7)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = '#F20A64'
@@ -130,7 +135,7 @@ export default function Footer() {
                   }}
                 >
                   Preregistro
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
