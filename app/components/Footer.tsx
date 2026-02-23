@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import EarlyAccessCTA from './EarlyAccessCTA'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -19,6 +20,18 @@ export default function Footer() {
       {/* Elemento decorativo sutil */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-32 rounded-full mix-blend-multiply filter blur-3xl opacity-15" style={{ backgroundColor: 'rgba(186, 176, 237, 0.10)' }}></div>
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-10 lg:py-12">
+
+        {/* Banda CTA pre-footer */}
+        <div className="flex flex-col items-center gap-3 sm:gap-4 text-center mb-8 sm:mb-10 md:mb-12 pb-8 sm:pb-10 md:pb-12" style={{ borderBottom: '1px solid rgba(186, 176, 237, 0.2)' }}>
+          <p className="text-lg sm:text-xl md:text-2xl font-bold" style={{ color: '#3C3C3B' }}>
+            Da el primer paso con eJoi
+          </p>
+          <p className="text-sm sm:text-base max-w-md" style={{ color: 'rgba(60, 60, 59, 0.65)' }}>
+            Regístrate gratis y sé de los primeros en vivir la experiencia.
+          </p>
+          <EarlyAccessCTA source="pre_footer" />
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {/* Brand */}
           <div className="col-span-1 sm:col-span-2 md:col-span-2">

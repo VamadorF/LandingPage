@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import EarlyAccessCTA from './EarlyAccessCTA'
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false)
@@ -10,10 +11,7 @@ export default function Hero() {
     setIsVisible(true)
   }, [])
 
-  const scrollToForm = () => {
-    const formSection = document.getElementById('preregister')
-    formSection?.scrollIntoView({ behavior: 'smooth' })
-  }
+
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20 md:pt-24 py-8 sm:py-12 md:py-20" style={{
@@ -53,21 +51,12 @@ export default function Hero() {
         </h1>
 
         <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-ejoi-gris mb-4 sm:mb-6 md:mb-8 max-w-2xl mx-auto leading-relaxed px-2" style={{ color: 'rgba(60, 60, 59, 0.85)' }}>
-          Más que un chatbot: una compañera virtual con memoria persistente que recuerda 
+          Más que un chatbot: una compañera virtual con memoria persistente que recuerda
           tus gustos, hitos y contexto. El vínculo crece contigo, conversación a conversación.
         </p>
 
         <div className="flex justify-center items-center mb-4 sm:mb-6 md:mb-8">
-          <button
-            onClick={scrollToForm}
-            className="w-full sm:w-auto min-h-[44px] px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-white font-semibold rounded-full shadow-md hover:shadow-lg transform hover:scale-[1.02] transition-all duration-300 text-sm sm:text-base md:text-lg"
-            style={{
-              backgroundColor: '#F20A64',
-              boxShadow: '0 4px 14px rgba(242, 10, 100, 0.25)'
-            }}
-          >
-            Preregístrate ahora
-          </button>
+          <EarlyAccessCTA source="hero" />
         </div>
 
         {/* App Store Buttons — Próximamente */}
