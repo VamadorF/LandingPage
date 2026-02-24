@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
+import EarlyAccessCTA from './EarlyAccessCTA'
 
 interface Archetype {
   id: string
@@ -104,7 +105,7 @@ export default function Archetypes() {
       const width = window.innerWidth
       setIsTablet(width >= 768 && width <= 1024) // iPad sizes (md to lg)
     }
-    
+
     updateViewport()
     window.addEventListener('resize', updateViewport)
     return () => window.removeEventListener('resize', updateViewport)
@@ -160,15 +161,14 @@ export default function Archetypes() {
             <div className="inline-flex items-center gap-1 bg-white rounded-full p-0.5 sm:p-1 shadow-sm w-full sm:w-auto" style={{ border: '1px solid rgba(186, 176, 237, 0.2)' }}>
               <button
                 onClick={() => setSelectedGender('femenino')}
-                className={`min-h-[40px] sm:min-h-[44px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-full font-medium transition-all duration-300 text-xs sm:text-sm md:text-base flex-1 sm:flex-none ${
-                  selectedGender === 'femenino'
+                className={`min-h-[40px] sm:min-h-[44px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-full font-medium transition-all duration-300 text-xs sm:text-sm md:text-base flex-1 sm:flex-none ${selectedGender === 'femenino'
                     ? 'text-white shadow-sm'
                     : 'hover:text-ejoi-gris'
-                }`}
-                style={selectedGender === 'femenino' ? { 
+                  }`}
+                style={selectedGender === 'femenino' ? {
                   backgroundColor: '#F20A64',
                   boxShadow: '0 2px 8px rgba(242, 10, 100, 0.25)'
-                } : { 
+                } : {
                   color: 'rgba(60, 60, 59, 0.6)'
                 }}
               >
@@ -176,15 +176,14 @@ export default function Archetypes() {
               </button>
               <button
                 onClick={() => setSelectedGender('masculino')}
-                className={`min-h-[40px] sm:min-h-[44px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-full font-medium transition-all duration-300 text-xs sm:text-sm md:text-base flex-1 sm:flex-none ${
-                  selectedGender === 'masculino'
+                className={`min-h-[40px] sm:min-h-[44px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-full font-medium transition-all duration-300 text-xs sm:text-sm md:text-base flex-1 sm:flex-none ${selectedGender === 'masculino'
                     ? 'text-white shadow-sm'
                     : 'hover:text-ejoi-gris'
-                }`}
-                style={selectedGender === 'masculino' ? { 
+                  }`}
+                style={selectedGender === 'masculino' ? {
                   backgroundColor: '#F20A64',
                   boxShadow: '0 2px 8px rgba(242, 10, 100, 0.25)'
-                } : { 
+                } : {
                   color: 'rgba(60, 60, 59, 0.6)'
                 }}
               >
@@ -196,15 +195,14 @@ export default function Archetypes() {
             <div className="inline-flex items-center gap-1 bg-white rounded-full p-0.5 sm:p-1 shadow-sm w-full sm:w-auto" style={{ border: '1px solid rgba(186, 176, 237, 0.2)' }}>
               <button
                 onClick={() => setSelectedStyle('realista')}
-                className={`min-h-[40px] sm:min-h-[44px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-full font-medium transition-all duration-300 text-xs sm:text-sm md:text-base flex-1 sm:flex-none ${
-                  selectedStyle === 'realista'
+                className={`min-h-[40px] sm:min-h-[44px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-full font-medium transition-all duration-300 text-xs sm:text-sm md:text-base flex-1 sm:flex-none ${selectedStyle === 'realista'
                     ? 'text-white shadow-sm'
                     : 'hover:text-ejoi-gris'
-                }`}
-                style={selectedStyle === 'realista' ? { 
+                  }`}
+                style={selectedStyle === 'realista' ? {
                   backgroundColor: '#F20A64',
                   boxShadow: '0 2px 8px rgba(242, 10, 100, 0.25)'
-                } : { 
+                } : {
                   color: 'rgba(60, 60, 59, 0.6)'
                 }}
               >
@@ -212,15 +210,14 @@ export default function Archetypes() {
               </button>
               <button
                 onClick={() => setSelectedStyle('anime')}
-                className={`min-h-[40px] sm:min-h-[44px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-full font-medium transition-all duration-300 text-xs sm:text-sm md:text-base flex-1 sm:flex-none ${
-                  selectedStyle === 'anime'
+                className={`min-h-[40px] sm:min-h-[44px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-full font-medium transition-all duration-300 text-xs sm:text-sm md:text-base flex-1 sm:flex-none ${selectedStyle === 'anime'
                     ? 'text-white shadow-sm'
                     : 'hover:text-ejoi-gris'
-                }`}
-                style={selectedStyle === 'anime' ? { 
+                  }`}
+                style={selectedStyle === 'anime' ? {
                   backgroundColor: '#F20A64',
                   boxShadow: '0 2px 8px rgba(242, 10, 100, 0.25)'
-                } : { 
+                } : {
                   color: 'rgba(60, 60, 59, 0.6)'
                 }}
               >
@@ -235,7 +232,7 @@ export default function Archetypes() {
             <div
               key={archetype.id}
               className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 flex flex-col"
-              style={{ 
+              style={{
                 border: '1px solid rgba(186, 176, 237, 0.2)',
                 boxShadow: '0 2px 8px rgba(186, 176, 237, 0.08)'
               }}
@@ -253,7 +250,7 @@ export default function Archetypes() {
               <div className="relative h-48 sm:h-56 md:h-72 lg:h-72 xl:h-80 overflow-hidden flex-shrink-0" style={{ backgroundColor: 'rgba(186, 176, 237, 0.05)' }}>
                 {/* Loading skeleton */}
                 {!loadedImages.has(`${archetype.id}-${selectedStyle}`) && !imageErrors.has(`${archetype.id}-${selectedStyle}`) && (
-                  <div className="absolute inset-0 animate-pulse flex items-center justify-center" style={{ 
+                  <div className="absolute inset-0 animate-pulse flex items-center justify-center" style={{
                     background: 'linear-gradient(90deg, rgba(186, 176, 237, 0.1) 0%, rgba(186, 176, 237, 0.15) 50%, rgba(186, 176, 237, 0.1) 100%)',
                     backgroundSize: '200% 100%',
                     animation: 'pulse-soft 2s ease-in-out infinite'
@@ -261,7 +258,7 @@ export default function Archetypes() {
                     <div className="w-20 h-20 rounded-full animate-pulse-soft" style={{ backgroundColor: 'rgba(186, 176, 237, 0.3)' }}></div>
                   </div>
                 )}
-                
+
                 {/* Error fallback */}
                 {imageErrors.has(`${archetype.id}-${selectedStyle}`) ? (
                   <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
@@ -278,9 +275,8 @@ export default function Archetypes() {
                     alt={archetype.name}
                     fill
                     loading="lazy"
-                    className={`object-cover transition-all duration-500 ${
-                      hoveredArchetype === archetype.id ? 'scale-110' : 'scale-100'
-                    } ${loadedImages.has(`${archetype.id}-${selectedStyle}`) ? 'opacity-100' : 'opacity-0'}`}
+                    className={`object-cover transition-all duration-500 ${hoveredArchetype === archetype.id ? 'scale-110' : 'scale-100'
+                      } ${loadedImages.has(`${archetype.id}-${selectedStyle}`) ? 'opacity-100' : 'opacity-0'}`}
                     style={{
                       objectPosition: getObjectPosition(archetype),
                     }}
@@ -295,7 +291,7 @@ export default function Archetypes() {
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              
+
               <div className="flex-1 flex flex-col p-3 sm:p-4 md:p-6">
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-ejoi-gris mb-1.5 sm:mb-2 md:mb-3">
                   {archetype.name}
@@ -316,11 +312,11 @@ export default function Archetypes() {
                     const url = new URL(window.location.href)
                     url.search = params.toString()
                     window.history.pushState({}, '', url.toString())
-                    
+
                     // Hacer scroll al formulario
                     const formSection = document.getElementById('preregister')
                     formSection?.scrollIntoView({ behavior: 'smooth' })
-                    
+
                     // Disparar evento personalizado para que el formulario se actualice
                     window.dispatchEvent(new CustomEvent('archetypeSelected', {
                       detail: {
@@ -331,7 +327,7 @@ export default function Archetypes() {
                     }))
                   }}
                   className="w-full min-h-[40px] sm:min-h-[44px] px-3 sm:px-4 py-2 sm:py-2.5 bg-white font-semibold rounded-full transition-all duration-200 text-xs sm:text-sm md:text-base shadow-sm border hover:shadow-md"
-                  style={{ 
+                  style={{
                     color: '#F20A64',
                     borderColor: 'rgba(186, 176, 237, 0.2)',
                     backgroundColor: 'rgba(186, 176, 237, 0.05)'
@@ -348,6 +344,14 @@ export default function Archetypes() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* CTA post-arquetipos */}
+        <div className="mt-10 sm:mt-12 md:mt-16 flex flex-col items-center gap-3 sm:gap-4">
+          <p className="text-sm sm:text-base md:text-lg font-medium text-center px-4" style={{ color: 'rgba(60, 60, 59, 0.7)' }}>
+            ¿Ya elegiste tu compañero/a? ¡Reserva tu lugar ahora!
+          </p>
+          <EarlyAccessCTA source="post_arquetipos" />
         </div>
       </div>
     </section>
