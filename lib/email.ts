@@ -2,7 +2,10 @@ import { Resend } from "resend";
 import { readFileSync } from "fs";
 import { join } from "path";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY
+  ? new Resend(process.env.RESEND_API_KEY)
+  : null;
 
 interface PreregistroEmailData {
   nombre: string;
@@ -51,6 +54,11 @@ export async function sendPreregistroConfirmationEmail(
       .replace(/\{\{email\}\}/g, escapeHtml(data.email));
 
     // Enviar el correo usando Resend
+    if (!resend) {
+      console.error("[Email] Cliente Resend no inicializado");
+      return { success: false, error: "Cliente de email no inicializado" };
+    }
+
     const { data: emailData, error } = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL,
       to: [data.email],
