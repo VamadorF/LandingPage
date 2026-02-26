@@ -12,7 +12,7 @@ interface Archetype {
   description: string
   objectPositionRealista?: string
   objectPositionAnime?: string
-  // Mobile-specific focal points (only applied < 640px)
+  // Puntos focales específicos de móvil (solo se aplican < 640px)
   objectPositionRealistaMobile?: string
   objectPositionAnimeMobile?: string
 }
@@ -155,7 +155,7 @@ export default function Archetypes() {
   }
 
   const getObjectPosition = (archetype: Archetype) => {
-    // Mobile-specific focal points take priority on small screens
+    // Especifico de mobil, toma prioridad en pantallas pequeñas.
     if (isMobile) {
       const mobilePosition = selectedStyle === 'anime'
         ? archetype.objectPositionAnimeMobile
