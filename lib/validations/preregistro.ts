@@ -44,7 +44,7 @@ export const preregistroSchema = z.object({
         .string()
         .trim()
         .min(1, "El nombre es requerido")
-        .min(4, "El nombre debe tener al menos 4 caracteres"),
+        .min(2, "El nombre debe tener al menos 2 caracteres"),
     email: z.string().trim().toLowerCase().email("El email no es válido"),
     arquetipo: z.string().trim().min(1, "Debes seleccionar un arquetipo"),
     estilo: z.enum(["realista", "anime"]),
@@ -85,8 +85,8 @@ export function validatePreregistroForm(
     // Obligatorios
     if (!data.nombre.trim()) {
         errors.nombre = "El nombre es requerido";
-    } else if (data.nombre.trim().length < 4) {
-        errors.nombre = "El nombre debe tener al menos 4 caracteres";
+    } else if (data.nombre.trim().length < 2) {
+        errors.nombre = "El nombre debe tener al menos 2 caracteres";
     }
 
     if (!data.email.trim()) {
@@ -138,8 +138,8 @@ export function validateField(
     switch (field) {
         case "nombre":
             if (!data.nombre.trim()) return "El nombre es requerido";
-            if (data.nombre.trim().length < 4)
-                return "El nombre debe tener al menos 4 caracteres";
+            if (data.nombre.trim().length < 2)
+                return "El nombre debe tener al menos 2 caracteres";
             return undefined;
 
         case "email":

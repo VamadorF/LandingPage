@@ -12,6 +12,9 @@ interface Archetype {
   description: string
   objectPositionRealista?: string
   objectPositionAnime?: string
+  // Mobile-specific focal points (only applied < 640px)
+  objectPositionRealistaMobile?: string
+  objectPositionAnimeMobile?: string
 }
 
 const archetypesFemeninos: Archetype[] = [
@@ -23,6 +26,8 @@ const archetypesFemeninos: Archetype[] = [
     description: 'Cálida, acogedora y siempre atenta. Perfecta para quienes buscan compañía reconfortante y conversaciones que nutren el alma.',
     objectPositionRealista: 'center 35%',
     objectPositionAnime: 'center 25%',
+    objectPositionRealistaMobile: 'center 15%',
+    objectPositionAnimeMobile: 'center 10%',
   },
   {
     id: 'ejecutiva',
@@ -32,6 +37,8 @@ const archetypesFemeninos: Archetype[] = [
     description: 'Profesional, inteligente y orientada a resultados. Ideal para conversaciones estimulantes y apoyo en tus objetivos personales y profesionales.',
     objectPositionRealista: 'center 20%',
     objectPositionAnime: 'center 20%',
+    objectPositionRealistaMobile: 'center 10%',
+    objectPositionAnimeMobile: 'center 10%',
   },
   {
     id: 'musa',
@@ -41,6 +48,8 @@ const archetypesFemeninos: Archetype[] = [
     description: 'Creativa, inspiradora y bohemia. Tu compañera ideal para explorar ideas, arte y la belleza en las pequeñas cosas de la vida.',
     objectPositionRealista: 'center 30%',
     objectPositionAnime: 'center 30%',
+    objectPositionRealistaMobile: 'center 20%',
+    objectPositionAnimeMobile: 'center 20%',
   },
   {
     id: 'porrista',
@@ -50,6 +59,8 @@ const archetypesFemeninos: Archetype[] = [
     description: 'Energética, positiva y motivadora. Siempre lista para animarte y celebrar tus logros, sin importar qué tan grandes o pequeños sean.',
     objectPositionRealista: 'center 30%',
     objectPositionAnime: 'center 25%',
+    objectPositionRealistaMobile: 'center 20%',
+    objectPositionAnimeMobile: 'center 15%',
   },
 ]
 
@@ -62,6 +73,8 @@ const archetypesMasculinos: Archetype[] = [
     description: 'Arquetipo de autoridad racional. Presencia pulida, autocontrol y estatus profesional. Proyecta competencia, liderazgo silencioso y fiabilidad. Decide con claridad, mantiene el control sin necesidad de imponerse.',
     objectPositionRealista: 'center 30%',
     objectPositionAnime: 'center 30%',
+    objectPositionRealistaMobile: 'center 20%',
+    objectPositionAnimeMobile: 'center 20%',
   },
   {
     id: 'artesano',
@@ -71,6 +84,8 @@ const archetypesMasculinos: Archetype[] = [
     description: 'Arquetipo de masculinidad constructiva. Manos que crean, foco sostenido y paciencia. La habilidad tangible y la constancia definen su presencia. La seguridad emerge del hacer cotidiano, no de la exhibición.',
     objectPositionRealista: 'center 40%',
     objectPositionAnime: 'center 40%',
+    objectPositionRealistaMobile: 'center 30%',
+    objectPositionAnimeMobile: 'center 30%',
   },
   {
     id: 'intelectual',
@@ -80,6 +95,8 @@ const archetypesMasculinos: Archetype[] = [
     description: 'Arquetipo de profundidad reflexiva. Estética cuidada, apertura emocional y curiosidad cultural. Escucha con atención, sostiene criterio propio y articula un mundo interno sólido. Transmite calma, cercanía y respeto.',
     objectPositionRealista: 'center 35%',
     objectPositionAnime: 'center 35%',
+    objectPositionRealistaMobile: 'center 25%',
+    objectPositionAnimeMobile: 'center 25%',
   },
   {
     id: 'protector',
@@ -89,6 +106,8 @@ const archetypesMasculinos: Archetype[] = [
     description: 'Arquetipo de fuerza disciplinada. El cuerpo como herramienta de servicio, orden y vigilancia. Mantiene el control bajo presión y ofrece una presencia física dominante, siempre contenida y consciente.',
     objectPositionRealista: 'center 35%',
     objectPositionAnime: 'center 35%',
+    objectPositionRealistaMobile: 'center 25%',
+    objectPositionAnimeMobile: 'center 25%',
   },
 ]
 
@@ -97,6 +116,7 @@ export default function Archetypes() {
   const [selectedGender, setSelectedGender] = useState<'masculino' | 'femenino'>('femenino')
   const [hoveredArchetype, setHoveredArchetype] = useState<string | null>(null)
   const [isTablet, setIsTablet] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set())
   const [imageErrors, setImageErrors] = useState<Set<string>>(new Set())
 
@@ -104,6 +124,7 @@ export default function Archetypes() {
     const updateViewport = () => {
       const width = window.innerWidth
       setIsTablet(width >= 768 && width <= 1024) // iPad sizes (md to lg)
+      setIsMobile(width < 640) // Mobile breakpoint (matches Tailwind sm)
     }
 
     updateViewport()
@@ -134,6 +155,13 @@ export default function Archetypes() {
   }
 
   const getObjectPosition = (archetype: Archetype) => {
+    // Mobile-specific focal points take priority on small screens
+    if (isMobile) {
+      const mobilePosition = selectedStyle === 'anime'
+        ? archetype.objectPositionAnimeMobile
+        : archetype.objectPositionRealistaMobile
+      if (mobilePosition) return mobilePosition
+    }
     const basePosition = selectedStyle === 'anime'
       ? (archetype.objectPositionAnime || 'center center')
       : (archetype.objectPositionRealista || 'center center')
@@ -162,8 +190,8 @@ export default function Archetypes() {
               <button
                 onClick={() => setSelectedGender('femenino')}
                 className={`min-h-[40px] sm:min-h-[44px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-full font-medium transition-all duration-300 text-xs sm:text-sm md:text-base flex-1 sm:flex-none ${selectedGender === 'femenino'
-                    ? 'text-white shadow-sm'
-                    : 'hover:text-ejoi-gris'
+                  ? 'text-white shadow-sm'
+                  : 'hover:text-ejoi-gris'
                   }`}
                 style={selectedGender === 'femenino' ? {
                   backgroundColor: '#F20A64',
@@ -177,8 +205,8 @@ export default function Archetypes() {
               <button
                 onClick={() => setSelectedGender('masculino')}
                 className={`min-h-[40px] sm:min-h-[44px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-full font-medium transition-all duration-300 text-xs sm:text-sm md:text-base flex-1 sm:flex-none ${selectedGender === 'masculino'
-                    ? 'text-white shadow-sm'
-                    : 'hover:text-ejoi-gris'
+                  ? 'text-white shadow-sm'
+                  : 'hover:text-ejoi-gris'
                   }`}
                 style={selectedGender === 'masculino' ? {
                   backgroundColor: '#F20A64',
@@ -196,8 +224,8 @@ export default function Archetypes() {
               <button
                 onClick={() => setSelectedStyle('realista')}
                 className={`min-h-[40px] sm:min-h-[44px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-full font-medium transition-all duration-300 text-xs sm:text-sm md:text-base flex-1 sm:flex-none ${selectedStyle === 'realista'
-                    ? 'text-white shadow-sm'
-                    : 'hover:text-ejoi-gris'
+                  ? 'text-white shadow-sm'
+                  : 'hover:text-ejoi-gris'
                   }`}
                 style={selectedStyle === 'realista' ? {
                   backgroundColor: '#F20A64',
@@ -211,8 +239,8 @@ export default function Archetypes() {
               <button
                 onClick={() => setSelectedStyle('anime')}
                 className={`min-h-[40px] sm:min-h-[44px] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-full font-medium transition-all duration-300 text-xs sm:text-sm md:text-base flex-1 sm:flex-none ${selectedStyle === 'anime'
-                    ? 'text-white shadow-sm'
-                    : 'hover:text-ejoi-gris'
+                  ? 'text-white shadow-sm'
+                  : 'hover:text-ejoi-gris'
                   }`}
                 style={selectedStyle === 'anime' ? {
                   backgroundColor: '#F20A64',
@@ -247,7 +275,7 @@ export default function Archetypes() {
                 e.currentTarget.style.boxShadow = '0 2px 8px rgba(186, 176, 237, 0.08)'
               }}
             >
-              <div className="relative h-48 sm:h-56 md:h-72 lg:h-72 xl:h-80 overflow-hidden flex-shrink-0" style={{ backgroundColor: 'rgba(186, 176, 237, 0.05)' }}>
+              <div className="relative overflow-hidden flex-shrink-0 aspect-[3/4] sm:aspect-auto sm:h-56 md:h-72 lg:h-72 xl:h-80" style={{ backgroundColor: 'rgba(186, 176, 237, 0.05)' }}>
                 {/* Loading skeleton */}
                 {!loadedImages.has(`${archetype.id}-${selectedStyle}`) && !imageErrors.has(`${archetype.id}-${selectedStyle}`) && (
                   <div className="absolute inset-0 animate-pulse flex items-center justify-center" style={{
