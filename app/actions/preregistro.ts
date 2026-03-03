@@ -39,6 +39,7 @@ export async function submitPreregistro(input: unknown) {
       genero_avatar: payload.generoAvatar,
       acepta_terminos: payload.aceptaTerminos,
       busca: payload.busca ?? null,
+      cantidad_preguntas_personalizacion: payload.cantidad_preguntas_personalizacion ?? null,
       disposicion_pago: payload.disposicion_pago ?? null,
     });
 
