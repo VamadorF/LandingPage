@@ -4,6 +4,7 @@ import { z } from "zod";
 
 export type BuscaValue = "amistad" | "romance" | "apoyo_emocional";
 export type DisposicionValue = "no_pagaria" | "tal_vez" | "si_pagaria";
+export type CantidadPreguntasValue = 5 | 10 | 12;
 
 export interface PreregistroFormData {
     nombre: string;
@@ -13,6 +14,7 @@ export interface PreregistroFormData {
     generoAvatar?: "masculino" | "femenino";
     aceptaTerminos: boolean;
     busca?: BuscaValue | null;
+    cantidad_preguntas_personalizacion?: CantidadPreguntasValue | null;
     disposicion_pago?: DisposicionValue | null;
 }
 
@@ -37,6 +39,12 @@ export const DISPOSICION_OPTIONS: { value: DisposicionValue; label: string }[] =
         { value: "si_pagaria", label: "Sí pagaría" },
     ];
 
+export const CANTIDAD_PREGUNTAS_OPTIONS: { value: CantidadPreguntasValue; label: string }[] = [
+    { value: 5, label: "5 preguntas" },
+    { value: 10, label: "10 preguntas" },
+    { value: 12, label: "12 preguntas" },
+];
+
 // ── Schema Zod (compartido frontend / server) ──────────────────────────────
 
 export const preregistroSchema = z.object({
@@ -55,6 +63,10 @@ export const preregistroSchema = z.object({
         .boolean()
         .refine((val) => val === true, "Debes aceptar los términos y condiciones"),
     busca: z.enum(["amistad", "romance", "apoyo_emocional"]).nullable().optional(),
+    cantidad_preguntas_personalizacion: z
+        .union([z.literal(5), z.literal(10), z.literal(12)])
+        .nullable()
+        .optional(),
     disposicion_pago: z
         .enum(["no_pagaria", "tal_vez", "si_pagaria"])
         .nullable()
@@ -112,6 +124,13 @@ export function validatePreregistroForm(
         const validBusca: BuscaValue[] = ["amistad", "romance", "apoyo_emocional"];
         if (!validBusca.includes(data.busca)) {
             errors.busca = "Opción inválida";
+        }
+    }
+
+    if (data.cantidad_preguntas_personalizacion != null) {
+        const validCantidad: CantidadPreguntasValue[] = [5, 10, 12];
+        if (!validCantidad.includes(data.cantidad_preguntas_personalizacion)) {
+            errors.cantidad_preguntas_personalizacion = "Opción inválida";
         }
     }
 

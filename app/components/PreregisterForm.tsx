@@ -7,6 +7,7 @@ import {
   type PreregistroFormData,
   type PreregistroFormErrors,
   BUSCA_OPTIONS,
+  CANTIDAD_PREGUNTAS_OPTIONS,
   DISPOSICION_OPTIONS,
   isPreregistroFormValid,
   validatePreregistroForm,
@@ -22,6 +23,7 @@ export default function PreregisterForm() {
     generoAvatar: undefined,
     aceptaTerminos: false,
     busca: null,
+    cantidad_preguntas_personalizacion: null,
     disposicion_pago: null,
   })
 
@@ -130,6 +132,7 @@ export default function PreregisterForm() {
           generoAvatar: formData.generoAvatar,
           aceptaTerminos: formData.aceptaTerminos,
           busca: formData.busca ?? null,
+          cantidad_preguntas_personalizacion: formData.cantidad_preguntas_personalizacion ?? null,
           disposicion_pago: formData.disposicion_pago ?? null,
         })
 
@@ -143,6 +146,7 @@ export default function PreregisterForm() {
             generoAvatar: undefined,
             aceptaTerminos: false,
             busca: null,
+            cantidad_preguntas_personalizacion: null,
             disposicion_pago: null,
           })
         } else {
@@ -163,7 +167,7 @@ export default function PreregisterForm() {
 
   const handleChange = (
     field: keyof PreregistroFormData,
-    value: string | boolean | undefined | null
+    value: string | number | boolean | undefined | null
   ) => {
     setFormData(prev => ({ ...prev, [field]: value }))
     // Limpiar error del campo al empezar a modificarlo
@@ -545,6 +549,42 @@ export default function PreregisterForm() {
                   </div>
                   {errors.busca && (
                     <p className="mt-1 text-sm text-red-500">{errors.busca}</p>
+                  )}
+                </div>
+
+                {/* Cantidad de preguntas de personalización */}
+                <div className="mb-5">
+                  <label className="block text-sm font-medium text-ejoi-gris mb-3">
+                    ¿Cuántas preguntas responderías para que tu compañero/a se adapte más a ti?
+                  </label>
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                    {CANTIDAD_PREGUNTAS_OPTIONS.map(opt => (
+                      <label
+                        key={opt.value}
+                        className={`flex items-center gap-2 min-h-[44px] px-4 py-2 rounded-lg border transition-all ${isSubmitting ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'
+                          } ${formData.cantidad_preguntas_personalizacion === opt.value
+                            ? 'border-[#F20A64] bg-[rgba(242,10,100,0.04)]'
+                            : 'border-[rgba(186,176,237,0.3)] hover:border-[rgba(242,10,100,0.4)]'
+                          }`}
+                      >
+                        <input
+                          type="radio"
+                          name="cantidad_preguntas_personalizacion"
+                          value={opt.value}
+                          checked={formData.cantidad_preguntas_personalizacion === opt.value}
+                          onChange={() =>
+                            handleChange('cantidad_preguntas_personalizacion', formData.cantidad_preguntas_personalizacion === opt.value ? null : opt.value)
+                          }
+                          disabled={isSubmitting}
+                          className="w-4 h-4"
+                          style={{ accentColor: '#F20A64' }}
+                        />
+                        <span className="text-sm text-ejoi-gris">{opt.label}</span>
+                      </label>
+                    ))}
+                  </div>
+                  {errors.cantidad_preguntas_personalizacion && (
+                    <p className="mt-1 text-sm text-red-500">{errors.cantidad_preguntas_personalizacion}</p>
                   )}
                 </div>
 
